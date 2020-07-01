@@ -1,5 +1,6 @@
 class OpinionsController < ApplicationController
-  before_action :set_opinion, only: [:show, :edit, :update, :destroy]
+  before_action :set_opinion, only: %i[show edit update destroy]
+  before_action :authenticate_user, except: %i[index show]
 
   # GET /opinions
   # GET /opinions.json
