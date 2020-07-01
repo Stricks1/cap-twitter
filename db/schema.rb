@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_01_175302) do
+ActiveRecord::Schema.define(version: 2020_07_01_180633) do
 
   create_table "opinions", force: :cascade do |t|
     t.text "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.text "username"
+    t.text "full_name"
+    t.text "photo"
+    t.text "cover_image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
