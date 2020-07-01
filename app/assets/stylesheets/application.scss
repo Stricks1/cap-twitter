@@ -138,9 +138,36 @@
   line-height: 1.1em;
 }
 
+.bold-flw {
+  font-size: 0.6em;
+  color: #526478;
+  font-weight: bold;
+  line-height: 1.1em;
+}
+
+.light-color {
+  color: #f2f8fb;
+  font-weight: bold;
+}
+
+.border-dark-bl-1,
+.border-dark-bl-2 {
+  border-top: 1px solid #192937;
+  border-bottom: 1px solid #192937;
+  border-right: 1px solid #192937;
+}
+
+.border-dark-bl-1 {
+  border-left: 1px solid #192937;
+}
+
 @media (min-width: 576px) {
   .bold-name {
     font-size: 1.2em;
+    line-height: 1.2em;
+  }
+  .bold-flw {
+    font-size: 0.8em;
     line-height: 1.2em;
   }
 }
