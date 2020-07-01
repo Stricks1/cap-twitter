@@ -1,6 +1,6 @@
 module ApplicationHelper
   def header_bar
-    cntnt = "<img src='https://www.bh-bims.org/wp-content/uploads/2017/12/twitter-icon-white.png'"
+    cntnt = "<img src='https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/twitter-icon-white.png'"
     cntnt.concat("class='logo'><div class='align-self-center px-4'>")
     if current_user 
       cntnt.concat(logged_btn)
@@ -20,7 +20,7 @@ module ApplicationHelper
 
   def logged_btn
     ret = ""
-    ret.concat(link_to image_tag('https://image.flaticon.com/icons/svg/598/598234.svg', border: 0, class: 'logo-sm'), edit_user_path(current_user))
+    ret.concat(link_to image_tag('https://raw.githubusercontent.com/Stricks1/cap-twitter/670218767f1f394888827319fd156758a5b57057/app/assets/images/pencil.svg', border: 0, class: 'logo-sm'), edit_user_path(current_user))
     ret.concat(" ")
     ret.concat(link_to "Log Out", logout_path, class: 'color-grey')
   end
