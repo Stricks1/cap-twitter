@@ -20,10 +20,13 @@
           <p> followers e tal </p>
         </div>
         <div class='col-8 col-md-9 col-lg-10 d-flex flex-column'>
-          <div class='bg-top-tab d-flex justify-content-between'>
+          <header class='bg-top-tab d-flex justify-content-between'>
             <%= header_bar %>
-          </div>
+          </header>
           <div class='bg-info'>
+            <div> 
+              <%= flash_info %> 
+            </div>
             <%= yield %>
           </div>
         </div>

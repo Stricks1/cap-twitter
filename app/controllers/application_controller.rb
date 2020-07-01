@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   def authenticate_user
     return unless session[:user_id].nil?
  
-    flash[:notice] = 'You need to be logged in to perform this action'
+    flash[:alert] = 'You need to be logged in to perform this action'
     redirect_to root_url
   end
 end
