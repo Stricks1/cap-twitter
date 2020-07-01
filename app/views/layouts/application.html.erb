@@ -13,13 +13,7 @@
   <body>
     <div class='container-fluid d-flex'>
       <div class='row w-100'>
-        <div class='bg-left-tab col-4 col-md-3 col-lg-2'>
-          <p> lorem ipsun </p>
-          <p> info user</p>
-          <p> name </p>
-          <p> followers e tal </p>
-        </div>
-        <div class='col-8 col-md-9 col-lg-10 d-flex flex-column'>
+        <%= render 'user_info', user: current_user %>
           <header class='bg-top-tab d-flex justify-content-between'>
             <%= header_bar %>
           </header>

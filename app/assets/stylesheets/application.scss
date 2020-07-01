@@ -125,3 +125,22 @@
 .color-grey:hover {
   color: #386E9A;
 }
+
+.profile {
+  width: 40%;
+}
+
+.bold-name {
+  font-size: 0.8em;
+  color: #526478;
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 1.1em;
+}
+
+@media (min-width: 576px) {
+  .bold-name {
+    font-size: 1.2em;
+    line-height: 1.2em;
+  }
+}
