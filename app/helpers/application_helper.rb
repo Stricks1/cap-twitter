@@ -31,12 +31,12 @@ module ApplicationHelper
 
   def flash_info
     if notice
-      ret = "<div><p id='notice' class='text-center py-2'>"
-      ret.concat(notice + "</p></div>")
+      ret = "<div><span id='notice' class='text-center d-block py-2'>"
+      ret.concat(notice + "</span></div>")
       ret.html_safe
     elsif alert
-      ret = "<div><p id='alert' class='text-center py-2'>"
-      ret.concat(alert + "</p></div>")
+      ret = "<div><span id='alert' class='text-center d-block py-2'>"
+      ret.concat(alert + "</span></div>")
       ret.html_safe
     end
   end

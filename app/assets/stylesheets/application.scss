@@ -108,6 +108,18 @@ body {
   width: 35%;
 }
 
+.rounded-border {
+  border-radius: 10px;
+}
+
+.bg-main-grey {
+  background-color: #f5f6f8;
+}
+
+.bg-white {
+  background-color: white;
+}
+
 .bg-left-tab {
   background-color: #1b2a3e;
 }
@@ -174,12 +186,12 @@ body {
   border-right: 1px solid #162730;
 }
 
-.left-links {
+.left-links,
+.central-links {
   text-transform: uppercase;
 }
 
 .left-links:hover {
-  text-decoration: none;
   background-color: #4b9ad3;
 }
 
@@ -192,6 +204,40 @@ body {
   font-weight: bold;
   color: #526478;
   font-size: 0.6em;
+}
+
+.center-bold-txt {
+  font-weight: bold;
+  color: #526478;
+}
+
+.right-bold-txt {
+  font-weight: bold;
+}
+
+.color-light-grey {
+  color: #bebfc1;
+}
+
+.right-tab {
+  padding-top: 2px;
+}
+
+.central-links {
+  border-bottom: 3px solid #51a2e4;
+}
+
+.left-links:hover,
+.central-links:hover {
+  text-decoration: none;
+}
+
+.borderb-grey {
+  border-bottom: 1px solid #ced2d5;
+}
+
+.borderl-grey {
+  border-left: 1px solid #ced2d5;
 }
 
 .logo-left {

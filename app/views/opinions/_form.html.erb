@@ -1,22 +1,14 @@
-<%= form_with(model: opinion, local: true) do |form| %>
-  <% if opinion.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(opinion.errors.count, "error") %> prohibited this opinion from being saved:</h2>
-
-      <ul>
-      <% opinion.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :text %>
-    <%= form.text_area :text %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+<% if current_user %>
+  <div class='bg-white w-75 border rounded-border p-3 my-4 color-light-grey'>
+    <p class='font-weight-bold'>WRITE ABOUT A MOVIE</p>
+    <%= form_with(model: opinion, local: true) do |form| %>
+      <%= form.text_area :text, :class => 'form-text', placeholder: 'Give your opinion...'  %>
+      <% opinion.errors.messages[:text].each do |message| %>
+        <div class='error-sm'><%= message %></div>
+      <% end %>  
+      <div class="actions mt-4">
+        <%= form.submit 'Send Opinion', :class => 'form-btn' %>
+      </div>
+    <% end %>
   </div>
 <% end %>
