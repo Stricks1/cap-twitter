@@ -1,6 +1,10 @@
-<h1>Editing User</h1>
-
-<%= render 'form', user: @user %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<div class='d-flex justify-content-center'>
+  <div class='py-4 w-50'>
+    <h1 class='text-center'>Edit Profile </h1>
+    <fieldset disabled>
+      <label class='form-label'>Username</label>
+      <input class='form-text disabled' value='<%= current_user.username %>' >
+    </fieldset>
+    <%= render 'form_edit', user: @user %>
+  </div>
+</div>

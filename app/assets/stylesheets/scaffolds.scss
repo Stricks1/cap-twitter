@@ -27,30 +27,6 @@ td {
   padding: 0 5px 7px;
 }
 
-div {
-  &.field, &.actions {
-    margin-bottom: 10px;
-  }
-}
-
-#notice {
-  color: white;
-  background-color: #6EE284;
-  font-size: 1.4em;
-}
-
-#alert {
-  color: white;
-  background-color: #EE7979;
-  font-size: 1.4em;
-}
-
-.field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
-}
-
 #error_explanation {
   width: 450px;
   border: 2px solid red;

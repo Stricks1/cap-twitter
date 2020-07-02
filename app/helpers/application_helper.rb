@@ -1,6 +1,6 @@
 module ApplicationHelper
   def header_bar
-    cntnt = "<img src='https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/twitter-icon-white.png'"
+    cntnt = "<img src='https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/clapperboardWhite.png'"
     cntnt.concat("class='logo'><div class='align-self-center px-2 d-flex justify-content-between'>")
     if current_user 
       cntnt.concat(logged_btn)
@@ -31,12 +31,12 @@ module ApplicationHelper
 
   def flash_info
     if notice
-      ret = "<p id='notice' class='text-center py-2'>"
-      ret.concat(notice + "</p>")
+      ret = "<div><p id='notice' class='text-center py-2'>"
+      ret.concat(notice + "</p></div>")
       ret.html_safe
     elsif alert
-      ret = "<p id='alert' class='text-center py-2'>"
-      ret.concat(alert + "</p>")
+      ret = "<div><p id='alert' class='text-center py-2'>"
+      ret.concat(alert + "</p></div>")
       ret.html_safe
     end
   end
