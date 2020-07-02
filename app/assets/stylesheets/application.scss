@@ -13,7 +13,13 @@
  *= require_tree .
  *= require_self
  */
-@import "bootstrap";
+@import 'bootstrap';
+@import 'font-awesome';
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+  font-family: 'Nunito', sans-serif;
+}
 
 .container-fluid {
   padding-right: 0;
@@ -99,7 +105,11 @@
 }
 
 .bg-left-tab {
-  background-color: #213246;
+  background-color: #1b2a3e;
+}
+
+.bg-left-bt-tab {
+  background-color: #213346;
 }
 
 .bg-top-tab {
@@ -152,13 +162,37 @@
 
 .border-dark-bl-1,
 .border-dark-bl-2 {
-  border-top: 1px solid #192937;
-  border-bottom: 1px solid #192937;
-  border-right: 1px solid #192937;
+  border-top: 1px solid #192736;
+  border-bottom: 1px solid #192736;
 }
 
 .border-dark-bl-1 {
-  border-left: 1px solid #192937;
+  border-right: 1px solid #192736;
+}
+
+.left-links {
+  text-transform: uppercase;
+}
+
+.left-links:hover {
+  text-decoration: none;
+  background-color: #4b9ad3;
+}
+
+.left-links:hover span,
+.left-links:hover i {
+  color: white;
+}
+
+.left-bold-txt {
+  font-weight: bold;
+  color: #526478;
+  font-size: 0.6em;
+}
+
+.logo-left {
+  color: #526478;
+  font-size: 0.8em;
 }
 
 @media (min-width: 576px) {
@@ -169,5 +203,11 @@
   .bold-flw {
     font-size: 0.8em;
     line-height: 1.2em;
+  }
+  .left-bold-txt {
+    font-size: 1em;
+  }
+  .logo-left {
+    font-size: 1.5em;
   }
 }
