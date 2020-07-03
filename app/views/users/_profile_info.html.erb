@@ -1,0 +1,25 @@
+<div class='d-flex flex-column'>
+  <div class='d-flex'>
+    <% unless current_user.follows.include?(@user) || current_user == @user %>
+      <%= link_to '+', follow_path(@user), :class => "textdec-none circle-link" %>
+    <% end %>
+    <img src='<%= @user.photo %>' class='profile p-2' alt='<%= @user.username %>'>
+  </div>
+  <span class='align-self-center bold-name'><%= @user.full_name %></span>
+  <span class='align-self-center bold-name'>@<%= @user.username %></span>
+  
+  <div class='d-flex'>
+    <div class='border'>
+      <span class='text-center d-block'><%= @user.opinions.count %></span>
+      <span class='text-center d-block bold-flw'>Opinions</span>
+    </div>
+    <div class='border'>
+      <span class='text-center d-block'><%= @user.followers.count %></span>
+      <span class='text-center d-block bold-flw'>Following</span>
+    </div>
+    <div class='border'>
+      <span class='text-center d-block'><%= @user.followeds.count %></span>
+      <span class='text-center d-block bold-flw'>Followers</span>
+    </div>
+  </div>
+</div>
