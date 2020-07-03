@@ -1,0 +1,18 @@
+<div class='bg-white w-75 border rounded-border p-3 my-4 color-light-grey'>
+   <% if current_user %>
+     <h2 class='text-blue-bold py-3 borderb-grey'>Followeds Opinions</h2>
+   <% else %>
+     <h2 class='text-blue-bold py-3 borderb-grey'>All Opinions</h2>
+   <% end %>
+   <% @opinions.each do |opi| %>
+    <tr>
+      <td><%= opi.user.username %></td>
+      <td><%= opi.user.photo %></td>
+      <td><%= opi.text %></td>
+      <% if current_user && opi.user.username == current_user.username %>
+        <td><%= link_to 'Edit', edit_opinion_path(opi) %></td>
+        <td><%= link_to 'Destroy', opi, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tr>
+   <% end %> 
+</div>

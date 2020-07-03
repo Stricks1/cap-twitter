@@ -5,7 +5,11 @@ class OpinionsController < ApplicationController
   # GET /opinions
   # GET /opinions.json
   def index
-    @opinions = Opinion.all
+    if current_user
+      @opinions = current_user.followeds_opinions  
+    else
+      @opinions = Opinion.order(created_at: :desc).includes(:user)
+    end 
     @opinion = Opinion.new
   end
 
