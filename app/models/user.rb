@@ -8,8 +8,7 @@ class User < ApplicationRecord
   has_many :followds, through: :followeds, source: :follower
 
   def followeds_opinions
-    timeline_op = follows
-    timeline_op << self
+    timeline_op = User.find(id, follows.select(:id).ids)
     Opinion.order(created_at: :desc).includes(:user).where({ user: [timeline_op]})
   end
 end

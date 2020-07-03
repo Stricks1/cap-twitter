@@ -6,7 +6,7 @@ class OpinionsController < ApplicationController
   # GET /opinions.json
   def index
     if current_user
-      @opinions = current_user.followeds_opinions  
+      @opinions = current_user.followeds_opinions
     else
       @opinions = Opinion.order(created_at: :desc).includes(:user)
     end 

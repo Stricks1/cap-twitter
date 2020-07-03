@@ -323,6 +323,21 @@ body {
   font-weight: bold;
 }
 
+.timeline-photo {
+  width: 60px;
+  height: 60px;
+  margin: 5px;
+}
+
+.edit-opinion {
+  width: 12px;
+  height: 12px;
+}
+
+.timeline-destroy:hover {
+  text-decoration: none;
+}
+
 @media (min-width: 576px) {
   .bold-name {
     font-size: 1.2em;

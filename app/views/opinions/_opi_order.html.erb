@@ -4,15 +4,25 @@
    <% else %>
      <h2 class='text-blue-bold py-3 borderb-grey'>All Opinions</h2>
    <% end %>
-   <% @opinions.each do |opi| %>
-    <tr>
-      <td><%= opi.user.username %></td>
-      <td><%= opi.user.photo %></td>
-      <td><%= opi.text %></td>
-      <% if current_user && opi.user.username == current_user.username %>
-        <td><%= link_to 'Edit', edit_opinion_path(opi) %></td>
-        <td><%= link_to 'Destroy', opi, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      <% end %>
-    </tr>
-   <% end %> 
+   <div class='d-flex flex-column'>
+     <% @opinions.each do |opi| %>
+      <div class='d-flex my-2'>
+        <img src=<%= opi.user.photo %> alt='User' class='timeline-photo' >
+        <div class='d-flex flex-column w-100'>
+          <div class='d-flex justify-content-between'>
+            <span class='font-weight-bold text-dark'>
+              <%= opi.user.username %>
+            </span>
+            <div class='mx-2'>
+              <% if current_user && opi.user.username == current_user.username %>
+                <%= link_to image_tag('https://raw.githubusercontent.com/Stricks1/cap-twitter/b3ee28c00f9504f9995a544ad14f2440b83f40a0/app/assets/images/pencil.svg', border: 0, class: 'edit-opinion'), edit_opinion_path(opi) %>
+                <%= link_to 'x', opi, method: :delete, data: { confirm: 'Are you sure?' }, :class => "timeline-destroy" %>
+              <% end %>
+            </div>
+          </div>
+          <span><%= opi.text %></span>
+        </div>
+      </div>
+     <% end %> 
+   </div>
 </div>
