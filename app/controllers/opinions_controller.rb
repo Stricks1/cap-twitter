@@ -7,9 +7,11 @@ class OpinionsController < ApplicationController
   def index
     if current_user
       @opinions = current_user.followeds_opinions
+      @users = current_user.who_follow
     else
       @opinions = Opinion.order(created_at: :desc).includes(:user)
-    end 
+      @users = User.order(created_at: :desc)
+    end
     @opinion = Opinion.new
   end
 

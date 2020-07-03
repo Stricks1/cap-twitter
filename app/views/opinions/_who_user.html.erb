@@ -1,0 +1,19 @@
+<div class='d-flex flex-column'>
+  <% @users.each do |u| %>
+   <div class='d-flex my-2 flex-column flex-md-row'>
+     <img src=<%= u.photo %> alt='User' class='rounded-circle who-photo mx-2 align-self-center' >
+     <div class='d-flex flex-column w-100 justify-content-center'>
+         <span class='font-weight-bold text-dark text-center'>
+           <%= u.full_name %>
+         </span>
+       <span class='text-center'>@<%= u.username %></span>
+      </div>
+       <span class='mx-2 font-weight-bold align-self-center'>
+         <% if current_user %>
+           <%= link_to '+', opinions_path, :class => "textdec-none circle-link" %>
+         <% end %>
+       </span>
+     
+   </div>
+  <% end %> 
+</div>

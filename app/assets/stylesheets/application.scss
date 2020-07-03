@@ -334,8 +334,26 @@ body {
   height: 12px;
 }
 
-.timeline-destroy:hover {
+.textdec-none:hover {
   text-decoration: none;
+}
+
+.who-photo {
+  width: 65px;
+  height: 65px;
+}
+
+.circle-link {
+  border: 1px solid #888;
+  font-size: 1.2em;
+  color: #888;
+  border-radius: 100%;
+  padding: 3px 7px;
+}
+
+.circle-link:hover {
+  color: #888;
+  background-color: white;
 }
 
 @media (min-width: 576px) {
