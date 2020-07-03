@@ -1,22 +1,28 @@
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+<div class='bg-main-grey d-flex row'>
+  <div class='opinions-page d-flex flex-column col-9 col-md-8 col-lg-9'>
+    <div class='borderb-grey d-flex flex-column'>
+      <img src=<%= @user.cover_image %> class='cover-img'>
+      <div class='borderb-grey d-flex'>
+        <a href=<%= user_path(@user) %> class='central-links d-flex p-4'>
+          <span class='center-bold-txt'>Opinions</span>
+        </a>
+      </div>
+    </div>
+    <div class='d-flex justify-content-center'>
+      <%= render 'opi_user', opinions: @opinions, user: @user%>  
+    </div>
+  </div>
+  <div class='right-tab borderb-grey borderl-grey col-3 col-md-4 col-lg-3'>    
+    <div class='borderb-grey d-flex justify-content-center'>
+      <div class='d-flex p-4 right-bold-txt color-light-grey'>
+        <%= render 'profile_info', user: @user %>
+      </div>
+    </div>
+    <div class='d-flex justify-content-center flex-nowrap'>
+      <%= render 'user_followeds', users: @users %>  
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Full name:</strong>
-  <%= @user.full_name %>
-</p>
 
-<p>
-  <strong>Photo:</strong>
-  <%= @user.photo %>
-</p>
-
-<p>
-  <strong>Cover image:</strong>
-  <%= @user.cover_image %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+   

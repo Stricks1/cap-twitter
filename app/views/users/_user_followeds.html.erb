@@ -15,11 +15,10 @@
        <span class='text-center'>@<%= u.username %></span>
       </div>
        <span class='mx-2 font-weight-bold align-self-center'>
-         <% if current_user %>
+         <% unless current_user.follows.include?(u) || current_user == u %>
            <%= link_to '+', follow_path(u), :class => "textdec-none circle-link" %>
          <% end %>
        </span>
-     
    </div>
   <% end %> 
 </div>

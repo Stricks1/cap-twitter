@@ -18,13 +18,13 @@ User.create!([{
     username: "stricks",
     full_name: "Gabriel Silveira",
     photo: "https://avatars3.githubusercontent.com/u/60522356?s=400&u=c26966471d76a25d871027b43c0282504e04caca&v=4",
-    cover_image: ""
+    cover_image: "http://img.covry.com/covers/cv/sea-at-night.jpg"
   },
   {
-    username: "ricks",
+    username: "rick",
     full_name: "Rick Sanchez",
-    photo: "https://vignette.wikia.nocookie.net/rickandmorty/images/4/41/Pickle_rick_transparent_edgetrimmed.png/revision/latest?cb=20200324115455",
-    cover_image: ""
+    photo: "https://cdn-images.threadless.com/threadless-media/artist_shops/shops/SabanShirts/products/263319/shirt-1499232874-ef706e663ecb4f9d126822e0af3c6cdc.png?v=3&d=eyJvbmx5X21ldGEiOiBmYWxzZSwgImZvcmNlIjogZmFsc2UsICJvcHMiOiBbWyJ0cmltIiwgW2ZhbHNlLCBmYWxzZV0sIHt9XSwgWyJyZXNpemUiLCBbXSwgeyJ3aWR0aCI6IDk5Ni4wLCAiYWxsb3dfdXAiOiBmYWxzZSwgImhlaWdodCI6IDk5Ni4wfV0sIFsiY2FudmFzX2NlbnRlcmVkIiwgWzEyMDAsIDEyMDBdLCB7ImJhY2tncm91bmQiOiAiZmZmZmZmIn1dLCBbInRyaW0iLCBbXSwge31dLCBbInJlc2l6ZSIsIFs0OTgsIDQ5OF0sIHt9XSwgWyJjYW52YXNfY2VudGVyZWQiLCBbNjAwLCA2MDAsICJmZmZmZmYiXSwge31dLCBbImVuY29kZSIsIFsianBnIiwgODVdLCB7fV1dfQ==",
+    cover_image: "https://wallpapercave.com/wp/wp2279644.jpg"
   }])
 
 p "Created #{User.count} users"
@@ -35,3 +35,15 @@ Following.create!([{
   }])
 
 p "Created #{Following.count} follows"
+
+
+Opinion.create!([{
+    text: 'Enter opinion text here',
+    user_id: 1,
+  },
+  {
+    text: 'Enter secont user text opinion here',
+    user_id: 2,
+  }])
+
+p "Created #{Opinion.count} opinions"

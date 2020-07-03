@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
-  before_action :authenticate_user, only: %i[show edit update]
+  before_action :authenticate_user!, only: %i[show edit update]
   
   # GET /users
   # GET /users.json
@@ -11,6 +11,9 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @user = User.find(params[:id])
+    @opinions = Opinion.order(created_at: :desc).includes(:user).where({ user: [@user]})
+    @users = @user.followds
   end
 
   # GET /users/new
@@ -19,8 +22,7 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1/edit
-  def edit
-  end
+  def edit;  end
 
   # POST /users
   # POST /users.json

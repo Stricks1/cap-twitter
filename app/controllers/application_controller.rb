@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  def authenticate_user
+  def authenticate_user!
     return unless session[:user_id].nil?
  
     flash[:alert] = 'You need to be logged in to perform this action'

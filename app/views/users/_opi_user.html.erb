@@ -1,15 +1,9 @@
 <div class='bg-white w-75 border rounded-border p-3 my-4 color-light-grey'>
-   <% if current_user %>
-     <h2 class='text-blue-bold py-3 borderb-grey'>Followeds Opinions</h2>
-   <% else %>
-     <h2 class='text-blue-bold py-3 borderb-grey'>All Opinions</h2>
-   <% end %>
+   <h2 class='text-blue-bold py-3 borderb-grey'>All <%= @user.full_name %> Opinions</h2>
    <div class='d-flex flex-column'>
      <% @opinions.each do |opi| %>
       <div class='d-flex my-2'>
-        <a href=<%= user_path(opi.user) %> >
-          <img src=<%= opi.user.photo %> alt='User' class='timeline-photo' >
-        </a>
+        <img src=<%= opi.user.photo %> alt='User' class='timeline-photo' >
         <div class='d-flex flex-column w-100'>
           <div class='d-flex justify-content-between'>
             <span class='font-weight-bold text-dark'>
