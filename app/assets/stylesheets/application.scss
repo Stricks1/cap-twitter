@@ -156,9 +156,20 @@ body {
   width: 40%;
 }
 
+.profile-right {
+  height: 90px;
+}
+
 .bold-name {
   font-size: 0.8em;
   color: #526478;
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 1.1em;
+}
+
+.bold-name-right {
+  font-size: 0.8em;
   font-weight: bold;
   text-transform: uppercase;
   line-height: 1.1em;
@@ -221,6 +232,11 @@ body {
 
 .right-tab {
   padding-top: 2px;
+}
+
+.right-tab-prof {
+  padding-top: 2px;
+  margin-top: 1px;
 }
 
 .central-links {
@@ -296,6 +312,15 @@ body {
   box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
 }
 
+.unfollow-btn {
+  height: 40px;
+  margin-right: 1.5em;
+}
+
+.unfollow-btn:hover {
+  color: white;
+}
+
 #notice {
   color: white;
   background-color: #6EE284;
@@ -361,6 +386,10 @@ body {
   width: 100%;
 }
 
+.username {
+  font-size: 0.8em;
+}
+
 @media (min-width: 576px) {
   .bold-name {
     font-size: 1.2em;
@@ -375,5 +404,18 @@ body {
   }
   .logo-left {
     font-size: 1.5em;
+  }
+  .profile-right {
+    height: 106px;
+  }
+}
+
+@media (min-width: 768px) {
+  .bold-name-right {
+    font-size: 1.2em;
+    line-height: 1.2em;
+  }
+  .username {
+    font-size: 1em;
   }
 }

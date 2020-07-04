@@ -16,4 +16,8 @@ class User < ApplicationRecord
     ids << id
     User.order(created_at: :desc).where.not({id: [ids]})
   end
+
+  def unfollow(user)
+    follows.destroy(user)
+  end
 end

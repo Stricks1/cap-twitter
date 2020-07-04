@@ -1,25 +1,28 @@
-<div class='d-flex flex-column'>
-  <div class='d-flex'>
+<div class='d-flex flex-column w-100'>
+  <div class='d-flex justify-content-center align-items-center flex-column flex-md-row'>
     <% unless current_user.follows.include?(@user) || current_user == @user %>
       <%= link_to '+', follow_path(@user), :class => "textdec-none circle-link" %>
     <% end %>
-    <img src='<%= @user.photo %>' class='profile p-2' alt='<%= @user.username %>'>
+    <img src='<%= @user.photo %>' class='profile-right p-2' alt='<%= @user.username %>'>
+    <% if current_user.follows.include?(@user) %>
+      <%= link_to '-', following_path(user), method: :delete, :class => "textdec-none circle-link" %>
+    <% end %>
   </div>
-  <span class='align-self-center bold-name'><%= @user.full_name %></span>
-  <span class='align-self-center bold-name'>@<%= @user.username %></span>
+  <span class='align-self-center bold-name-right text-dark text-center mt-1'><%= @user.full_name %></span>
+  <span class='align-self-center username text-center color-light-grey'>@<%= @user.username %></span>
   
-  <div class='d-flex'>
-    <div class='border'>
-      <span class='text-center d-block'><%= @user.opinions.count %></span>
-      <span class='text-center d-block bold-flw'>Opinions</span>
+  <div class='d-flex flex-column flex-md-row'>
+    <div class='border flex-grow-1'>
+      <span class='text-center d-block font-weight-bolder'><%= @user.opinions.count %></span>
+      <span class='text-center d-block bold-flw color-light-grey'>Opinions</span>
     </div>
-    <div class='border'>
-      <span class='text-center d-block'><%= @user.followers.count %></span>
-      <span class='text-center d-block bold-flw'>Following</span>
+    <div class='border flex-grow-1'>
+      <span class='text-center d-block font-weight-bolder'><%= @user.followers.count %></span>
+      <span class='text-center d-block bold-flw color-light-grey'>Following</span>
     </div>
-    <div class='border'>
-      <span class='text-center d-block'><%= @user.followeds.count %></span>
-      <span class='text-center d-block bold-flw'>Followers</span>
+    <div class='border flex-grow-1'>
+      <span class='text-center d-block font-weight-bolder'><%= @user.followeds.count %></span>
+      <span class='text-center d-block bold-flw color-light-grey'>Followers</span>
     </div>
   </div>
 </div>
