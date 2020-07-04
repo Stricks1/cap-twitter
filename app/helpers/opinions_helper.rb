@@ -46,6 +46,20 @@ module OpinionsHelper
     end
   end
 
+  def copied_info(opi)
+    return nil unless opi.copied_id
+
+    user = User.find(opi.copied_id)
+    edited = opi.created_at == opi.updated_at ? false : true
+    info = edited ? 'Edited opinion copied from @' : 'Opinion copied from @'
+    info.concat(user.username)
+    if current_user
+      cntnt = link_to info, user_path(user)
+    else
+      cntnt = info
+    end
+  end
+
   def op_btn_follow(u)
     link = link_to '+', follow_path(u), :class => 'textdec-none circle-link'
     return link if current_user

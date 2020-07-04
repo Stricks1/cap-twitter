@@ -22,8 +22,7 @@ class User < ApplicationRecord
   end
 
   def copy_opi(op)
-    opi_user = User.find(op.user_id)
-    copy_opinion = opinions.build(text: op.text)
+    copy_opinion = opinions.build(text: op.text, copied_id: op.user_id)
     copy_opinion.save
   end
 end
