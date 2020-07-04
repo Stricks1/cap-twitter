@@ -31,6 +31,8 @@ class OpinionsController < ApplicationController
   # POST /opinions.json
   def create
     @opinion = current_user.opinions.build(opinion_params)
+    @opinions = current_user.followeds_opinions
+    @users = current_user.who_follow
 
     respond_to do |format|
       if @opinion.save

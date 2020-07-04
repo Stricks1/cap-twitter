@@ -7,9 +7,13 @@
    <div class='d-flex flex-column'>
      <% @opinions.each do |opi| %>
       <div class='d-flex my-2'>
-        <a href=<%= user_path(opi.user) %> >
+        <% if current_user %>
+          <a href=<%= user_path(opi.user) %> >
+        <% end %>
           <img src=<%= opi.user.photo %> alt='User' class='timeline-photo' >
-        </a>
+        <% if current_user %>
+          </a>
+        <% end %>
         <div class='d-flex flex-column w-100'>
           <div class='d-flex justify-content-between'>
             <span class='font-weight-bold text-dark'>
@@ -21,7 +25,7 @@
                 <%= link_to 'x', opi, method: :delete, data: { confirm: 'Are you sure?' }, :class => "textdec-none" %>
               <% end %>              
               <% if current_user && opi.user.username != current_user.username %>
-                <%= link_to image_tag('https://toppng.com/uploads/preview/twitter-button-retweet-icon-11553463852prxvzlcaks.png', border: 0, class: 'edit-opinion'), retweet_path(opi) %>
+                <%= link_to image_tag('https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/retweet.png', border: 0, class: 'edit-opinion'), retweet_path(opi) %>
               <% end %>
             </div>
           </div>

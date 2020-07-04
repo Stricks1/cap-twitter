@@ -157,7 +157,8 @@ body {
 }
 
 .profile-right {
-  height: 90px;
+  max-width: 90px;
+  max-height: 90px;
 }
 
 .bold-name {
@@ -406,6 +407,7 @@ body {
     font-size: 1.5em;
   }
   .profile-right {
+    max-width: 106px;
     height: 106px;
   }
 }

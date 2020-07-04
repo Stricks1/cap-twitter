@@ -18,7 +18,25 @@ User.create!([{
     username: "stricks",
     full_name: "Gabriel Silveira",
     photo: "https://avatars3.githubusercontent.com/u/60522356?s=400&u=c26966471d76a25d871027b43c0282504e04caca&v=4",
-    cover_image: "http://img.covry.com/covers/cv/sea-at-night.jpg"
+    cover_image: "https://www.shutterstock.com/blog/wp-content/uploads/sites/5/2017/08/nature-design.jpg"
+  },
+  {
+    username: "Harry",
+    full_name: "Harry Potter",
+    photo: "https://veja.abril.com.br/wp-content/uploads/2016/09/harrypotterrotter-1.jpg",
+    cover_image: "https://i.pinimg.com/originals/c2/4b/e8/c24be8b914079df7aad2e3fb267d40f7.jpg"
+  },
+  {
+    username: "Homer",
+    full_name: "Homer Simpson",
+    photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSCfQsBqjU65qA8FbFDJUWdukalbRS_0mt37A&usqp=CAU",
+    cover_image: "https://i.pinimg.com/originals/69/46/cc/6946cc4f0029876320b10d2eae74a666.jpg"
+  },
+  {
+    username: "Kenny",
+    full_name: "Kenny McCormick",
+    photo: "https://cdn.shopify.com/s/files/1/0843/2781/products/550746c4748b05ac3ca76e8d7be4db78_large.png",
+    cover_image: "https://timelinecovers.pro/facebook-cover/download/video-game-south-park-the-stick-of-truth-facebook-cover.jpg"
   },
   {
     username: "rick",
@@ -31,19 +49,31 @@ p "Created #{User.count} users"
 
 Following.create!([{
     follower_id: 1,
-    followed_id: 2,
+    followed_id: 5,
+  },
+  {
+    follower_id: 2,
+    followed_id: 5,
+  },
+  {
+    follower_id: 3,
+    followed_id: 5,
+  },
+  {
+    follower_id: 4,
+    followed_id: 5,
   }])
 
 p "Created #{Following.count} follows"
 
 
 Opinion.create!([{
-    text: 'Enter opinion text here',
+    text: 'First opinion about nothing',
     user_id: 1,
   },
   {
-    text: 'Enter secont user text opinion here',
-    user_id: 2,
+    text: 'Pickle riiiiiick',
+    user_id: 5,
   }])
 
 p "Created #{Opinion.count} opinions"
