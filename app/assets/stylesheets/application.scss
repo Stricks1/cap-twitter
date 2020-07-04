@@ -238,6 +238,7 @@ body {
 .right-tab-prof {
   padding-top: 2px;
   margin-top: 1px;
+  font-size: 0.75em;
 }
 
 .central-links {
@@ -419,5 +420,8 @@ body {
   .profile-right {
     max-width: 150px;
     height: 106px;
+  }
+  .right-tab-prof {
+    font-size: 1em;
   }
 }

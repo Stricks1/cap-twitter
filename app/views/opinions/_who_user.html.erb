@@ -2,7 +2,7 @@
   <% @users.each do |u| %>
    <div class='d-flex my-2 flex-column flex-md-row'>
      <% if current_user %>
-     <a href=<%= user_path(u) %> >
+     <a href=<%= user_path(u) %> class='align-self-center'>
      <% end %>
        <img src=<%= u.photo %> alt='User' class='rounded-circle who-photo mx-2 align-self-center' >
      <% if current_user %>
