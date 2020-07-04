@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :followds, through: :followeds, source: :follower
 
   def followeds_opinions
-    Opinion.order(created_at: :desc).includes(:user).where({ user: [User.find(id, follows.select(:id).ids)]})
+    Opinion.order(created_at: :desc).includes(:user, :copied).where({ user: [User.find(id, follows.select(:id).ids)]})
   end
 
   def who_follow

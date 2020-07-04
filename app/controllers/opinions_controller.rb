@@ -9,7 +9,7 @@ class OpinionsController < ApplicationController
       @opinions = current_user.followeds_opinions
       @users = current_user.who_follow
     else
-      @opinions = Opinion.order(created_at: :desc).includes(:user)
+      @opinions = Opinion.order(created_at: :desc).includes(:user, :copied)
       @users = User.order(created_at: :desc)
     end
     @opinion = Opinion.new

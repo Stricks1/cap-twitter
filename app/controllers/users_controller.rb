@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    @opinions = Opinion.order(created_at: :desc).includes(:user).where({ user: [@user]})
+    @opinions = Opinion.order(created_at: :desc).includes(:user, :copied).where({ user: [@user]})
     @users = @user.followds
   end
 

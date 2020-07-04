@@ -28,12 +28,11 @@ module UsersHelper
   end
 
   def user_copied_info(opi)
-    return nil unless opi.copied_id
+    return nil unless opi.copied
 
-    user = User.find(opi.copied_id)
     edited = opi.created_at == opi.updated_at ? false : true
     info = edited ? 'Edited opinion copied from @' : 'Opinion copied from @'
-    info.concat(user.username)
-    cntnt = link_to info, user_path(user)
+    info.concat(opi.copied.username)
+    cntnt = link_to info, user_path(opi.copied)
   end
 end
