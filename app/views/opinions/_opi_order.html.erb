@@ -1,37 +1,21 @@
 <div class='bg-white w-75 border rounded-border p-3 my-4 color-light-grey'>
-   <% if current_user %>
-     <h2 class='text-blue-bold py-3 borderb-grey'>Followeds Opinions</h2>
-   <% else %>
-     <h2 class='text-blue-bold py-3 borderb-grey'>All Opinions</h2>
-   <% end %>
-   <div class='d-flex flex-column'>
-     <% @opinions.each do |opi| %>
+  <h2 class='text-blue-bold py-3 borderb-grey'><%= center_title %> </h2>
+  <div class='d-flex flex-column'>
+    <% @opinions.each do |opi| %>
       <div class='d-flex my-2'>
-        <% if current_user %>
-          <a href=<%= user_path(opi.user) %> >
-        <% end %>
-          <img src=<%= opi.user.photo %> alt='User' class='timeline-photo' >
-        <% if current_user %>
-          </a>
-        <% end %>
+        <%= linked_unlinked_comment(opi) %>
         <div class='d-flex flex-column w-100'>
           <div class='d-flex justify-content-between'>
             <span class='font-weight-bold text-dark'>
               <%= opi.user.username %>
             </span>
             <div class='mx-2'>
-              <% if current_user && opi.user.username == current_user.username %>
-                <%= link_to image_tag('https://raw.githubusercontent.com/Stricks1/cap-twitter/b3ee28c00f9504f9995a544ad14f2440b83f40a0/app/assets/images/pencil.svg', border: 0, class: 'edit-opinion'), edit_opinion_path(opi) %>
-                <%= link_to 'x', opi, method: :delete, data: { confirm: 'Are you sure?' }, :class => "textdec-none" %>
-              <% end %>              
-              <% if current_user && opi.user.username != current_user.username %>
-                <%= link_to image_tag('https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/retweet.png', border: 0, class: 'edit-opinion'), retweet_path(opi) %>
-              <% end %>
+              <%= edit_destroy_retweet(opi) %>
             </div>
           </div>
           <span><%= opi.text %></span>
         </div>
       </div>
-     <% end %> 
-   </div>
+    <% end %> 
+  </div>
 </div>

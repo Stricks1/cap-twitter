@@ -70,8 +70,7 @@ class OpinionsController < ApplicationController
   end
 
   def retweet
-    @copy_opinion = current_user.opinions.build(text: @opinion.text)
-    @copy_opinion.save
+    current_user.copy_opi(@opinion)
     redirect_to opinions_path
   end
 
