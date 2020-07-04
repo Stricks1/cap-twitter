@@ -1,16 +1,23 @@
 class OpinionsController < ApplicationController
-  before_action :set_opinion, only: [:show, :edit, :update, :destroy]
+  before_action :set_opinion, only: %i[show edit update destroy retweet]
+  before_action :authenticate_user!, except: %i[index show]
 
   # GET /opinions
   # GET /opinions.json
   def index
-    @opinions = Opinion.all
+    if current_user
+      @opinions = current_user.followeds_opinions
+      @users = current_user.who_follow
+    else
+      @opinions = Opinion.order(created_at: :desc).includes(:user)
+      @users = User.order(created_at: :desc)
+    end
+    @opinion = Opinion.new
   end
 
   # GET /opinions/1
   # GET /opinions/1.json
-  def show
-  end
+  def show; end
 
   # GET /opinions/new
   def new
@@ -18,20 +25,21 @@ class OpinionsController < ApplicationController
   end
 
   # GET /opinions/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /opinions
   # POST /opinions.json
   def create
-    @opinion = Opinion.new(opinion_params)
+    @opinion = current_user.opinions.build(opinion_params)
+    @opinions = current_user.followeds_opinions
+    @users = current_user.who_follow
 
     respond_to do |format|
       if @opinion.save
-        format.html { redirect_to @opinion, notice: 'Opinion was successfully created.' }
+        format.html { redirect_to opinions_path, notice: 'Opinion was successfully created.' }
         format.json { render :show, status: :created, location: @opinion }
       else
-        format.html { render :new }
+        format.html { render :index }
         format.json { render json: @opinion.errors, status: :unprocessable_entity }
       end
     end
@@ -42,7 +50,7 @@ class OpinionsController < ApplicationController
   def update
     respond_to do |format|
       if @opinion.update(opinion_params)
-        format.html { redirect_to @opinion, notice: 'Opinion was successfully updated.' }
+        format.html { redirect_to opinions_path, notice: 'Opinion was successfully updated.' }
         format.json { render :show, status: :ok, location: @opinion }
       else
         format.html { render :edit }
@@ -56,9 +64,15 @@ class OpinionsController < ApplicationController
   def destroy
     @opinion.destroy
     respond_to do |format|
-      format.html { redirect_to opinions_url, notice: 'Opinion was successfully destroyed.' }
+      format.html { redirect_to request.referer, notice: 'Opinion was successfully deleted.' }
       format.json { head :no_content }
     end
+  end
+
+  def retweet
+    @copy_opinion = current_user.opinions.build(text: @opinion.text)
+    @copy_opinion.save
+    redirect_to opinions_path
   end
 
   private

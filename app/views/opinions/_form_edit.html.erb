@@ -1,13 +1,13 @@
 <% if current_user %>
   <div class='bg-white w-75 border rounded-border p-3 my-4 color-light-grey'>
-    <p class='font-weight-bold'>WRITE ABOUT A MOVIE</p>
+    <p class='font-weight-bold'>CORRECT YOUR OPINION</p>
     <%= form_with(model: opinion, local: true) do |form| %>
       <%= form.text_area :text, :class => 'form-text', placeholder: 'Give your opinion...'  %>
       <% opinion.errors.messages[:text].each do |message| %>
         <div class='error-sm'><%= message %></div>
       <% end %>  
       <div class="actions mt-4">
-        <%= form.submit 'Send Opinion', :class => 'form-btn' %>
+        <%= form.submit 'Edit Opinion', :class => 'form-btn' %>
       </div>
     <% end %>
   </div>
