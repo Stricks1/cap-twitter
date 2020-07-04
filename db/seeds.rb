@@ -72,6 +72,18 @@ Opinion.create!([{
     user_id: 1,
   },
   {
+    text: 'Wingardium Leviosa',
+    user_id: 2,
+  },
+  {
+    text: 'Doh',
+    user_id: 3,
+  },
+  {
+    text: 'Hmmf hmf hmmmmf',
+    user_id: 4,
+  },
+  {
     text: 'Pickle riiiiiick',
     user_id: 5,
   }])
