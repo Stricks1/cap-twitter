@@ -3,7 +3,7 @@
    <div class='d-flex flex-column'>
      <% @opinions.each do |opi| %>
       <div class='d-flex my-2'>
-        <img src=<%= opi.user.photo %> alt='User' class='timeline-photo' >
+        <%= user_photo(opi) %>
         <div class='d-flex flex-column w-100'>
           <div class='d-flex justify-content-between'>
             <span class='font-weight-bold text-dark'>

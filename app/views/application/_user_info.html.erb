@@ -2,7 +2,7 @@
   <div class='bg-left-bt-tab col-4 col-md-3'>
     <div class='d-flex flex-column'>
       <div class='d-flex bg-left-tab'>
-        <img src='<%= current_user.photo %>' class='profile p-2' alt='<%= current_user.username %>'>
+        <%= current_profile(current_user) %>
         <span class='align-self-center bold-name'><%= current_user.full_name %></span>
       </div>
       <div class='d-flex justify-content-between bg-left-tab'>
@@ -28,7 +28,7 @@
           <i class='fa fa-hashtag logo-left px-2' aria-hidden='true'></i>
           <span class='left-bold-txt'>discover</span>
         </a>
-        <a href=<%= edit_user_path(current_user) %> class='d-block left-links d-flex p-4'>
+        <a href=<%= user_path(current_user) %> class='d-block left-links d-flex p-4'>
           <i class='fa fa-user logo-left px-2' aria-hidden='true'></i>
           <span class='left-bold-txt'>profile</span>
         </a>
