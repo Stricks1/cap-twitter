@@ -11,7 +11,11 @@ module OpinionsHelper
     if current_user
       link_to image_tag(opi.user.photo, border: 0, class: 'timeline-photo'), user_path(opi.user)
     else
-      image_tag(opi.user.photo, border: 0, class: 'timeline-photo')
+      begin 
+        image_tag(opi.user.photo, border: 0, class: 'timeline-photo')
+      rescue
+        image_tag('https://n8d.at/wp-content/plugins/aioseop-pro-2.4.11.1/images/default-user-image.png', border: 0, class: 'timeline-photo')
+      end
     end
   end
 
@@ -19,7 +23,11 @@ module OpinionsHelper
     if current_user
       link_to image_tag(usr.photo, border: 0, class: 'rounded-circle who-photo mx-2 align-self-center'), user_path(usr), class: 'align-self-center'
     else
-      image_tag(usr.photo, border: 0, class: 'rounded-circle who-photo mx-2 align-self-center')
+      begin 
+        image_tag(usr.photo, border: 0, class: 'rounded-circle who-photo mx-2 align-self-center')
+      rescue
+        image_tag('https://n8d.at/wp-content/plugins/aioseop-pro-2.4.11.1/images/default-user-image.png', border: 0, class: 'rounded-circle who-photo mx-2 align-self-center')      
+      end
     end
   end
 
