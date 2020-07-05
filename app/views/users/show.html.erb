@@ -1,7 +1,7 @@
 <div class='bg-main-grey d-flex row'>
   <div class='opinions-page d-flex flex-column col-9 col-md-8 col-lg-9'>
     <div class='borderb-grey d-flex flex-column'>
-      <img src=<%= @user.cover_image %> class='cover-img'>
+      <%= cover_photo(@user) %>
       <div class='d-flex justify-content-between'>
         <a href=<%= user_path(@user) %> class='central-links d-flex p-4'>
           <span class='center-bold-txt'>Opinions</span>

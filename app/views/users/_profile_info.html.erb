@@ -3,7 +3,7 @@
     <% unless current_user.follows.include?(@user) || current_user == @user %>
       <%= link_to '+', follow_path(@user), :class => "textdec-none circle-link" %>
     <% end %>
-    <img src='<%= @user.photo %>' class='profile-right p-2' alt='<%= @user.username %>'>
+    <%= profile_photo(@user) %>
     <% if current_user.follows.include?(@user) %>
       <%= link_to '-', following_path(user), method: :delete, :class => "textdec-none circle-link" %>
     <% end %>

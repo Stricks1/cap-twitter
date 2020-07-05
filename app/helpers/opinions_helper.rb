@@ -8,25 +8,35 @@ module OpinionsHelper
   end
 
   def linked_unlinked_comment(opi)
+    opi.user = set_user_images(opi.user)
     if current_user
-      link_to image_tag(opi.user.photo, border: 0, class: 'timeline-photo'), user_path(opi.user)
+      begin
+        link_to image_tag(opi.user.photo, border: 0, class: 'timeline-photo', alt: opi.user.username), user_path(opi.user)
+      rescue
+        link_to image_tag('https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/user_default.png', border: 0, class: 'timeline-photo', alt: opi.user.username), user_path(opi.user)
+      end
     else
       begin 
-        image_tag(opi.user.photo, border: 0, class: 'timeline-photo')
+        image_tag(opi.user.photo, border: 0, class: 'timeline-photo', alt: opi.user.username)
       rescue
-        image_tag('https://n8d.at/wp-content/plugins/aioseop-pro-2.4.11.1/images/default-user-image.png', border: 0, class: 'timeline-photo')
+        image_tag('https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/user_default.png', border: 0, class: 'timeline-photo', alt: opi.user.username)
       end
     end
   end
 
   def linked_unlinked_who(usr)
+    usr = set_user_images(usr)
     if current_user
-      link_to image_tag(usr.photo, border: 0, class: 'rounded-circle who-photo mx-2 align-self-center'), user_path(usr), class: 'align-self-center'
+      begin
+        link_to image_tag(usr.photo, border: 0, class: 'rounded-circle who-photo mx-2 align-self-center', alt: usr.username), user_path(usr), class: 'align-self-center'
+      rescue
+        link_to image_tag('https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/user_default.png', border: 0, class: 'rounded-circle who-photo mx-2 align-self-center', alt: usr.username), user_path(usr), class: 'align-self-center'
+      end
     else
       begin 
-        image_tag(usr.photo, border: 0, class: 'rounded-circle who-photo mx-2 align-self-center')
+        image_tag(usr.photo, border: 0, class: 'rounded-circle who-photo mx-2 align-self-center', alt: usr.username)
       rescue
-        image_tag('https://n8d.at/wp-content/plugins/aioseop-pro-2.4.11.1/images/default-user-image.png', border: 0, class: 'rounded-circle who-photo mx-2 align-self-center')      
+        image_tag('https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/user_default.png', border: 0, class: 'rounded-circle who-photo mx-2 align-self-center', alt: usr.username)      
       end
     end
   end
@@ -34,11 +44,11 @@ module OpinionsHelper
   def edit_destroy_retweet(opi)
     cntnt = ''
     if current_user && opi.user.username == current_user.username
-      cntnt.concat((link_to image_tag('https://raw.githubusercontent.com/Stricks1/cap-twitter/b3ee28c00f9504f9995a544ad14f2440b83f40a0/app/assets/images/pencil.svg', border: 0, class: 'edit-opinion'), edit_opinion_path(opi)))
+      cntnt.concat((link_to image_tag('https://raw.githubusercontent.com/Stricks1/cap-twitter/b3ee28c00f9504f9995a544ad14f2440b83f40a0/app/assets/images/pencil.svg', border: 0, class: 'edit-opinion', alt: 'edit'), edit_opinion_path(opi)))
       cntnt.concat((link_to 'x', opi, method: :delete, data: { confirm: 'Are you sure?' }, class: 'textdec-none ml-1'))
       cntnt.html_safe
     elsif current_user && opi.user.username != current_user.username
-      cntnt.concat((link_to image_tag('https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/retweet.png', border: 0, class: 'edit-opinion'), retweet_path(opi)))
+      cntnt.concat((link_to image_tag('https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/retweet.png', border: 0, class: 'edit-opinion', alt: 'copy_opinion'), retweet_path(opi)))
       cntnt.html_safe
     end
   end
