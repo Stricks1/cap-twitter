@@ -1,7 +1,7 @@
 <%= form_with(model: user, local: true) do |form| %>
 
   <%= form.label :full_name, 'Full Name *', :class => 'form-label' %>
-  <%= form.text_field :full_name, :class => 'form-text', placeholder: 'Full name here...'  %>
+  <%= form.text_field :full_name, :class => 'form-text', placeholder: 'Full name here...', autofocus: true %>
   <% user.errors.messages[:full_name].each do |message| %>
     <div class='error-sm'><%= message %></div>
   <% end %> 

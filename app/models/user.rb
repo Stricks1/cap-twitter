@@ -22,7 +22,12 @@ class User < ApplicationRecord
   end
 
   def copy_opi(op)
-    copy_opinion = opinions.build(text: op.text, copied_id: op.user_id)
+    if op.copied_id == nil || op.created_at != op.updated_at 
+      copy_opinion = opinions.build(text: op.text, copied_id: op.user_id)
+    else
+      copy_opinion = opinions.build(text: op.text, copied_id: op.copied_id)
+    end
+    
     copy_opinion.save
   end
 end
