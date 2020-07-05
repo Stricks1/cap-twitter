@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :followds, through: :followeds, source: :follower
 
   def followeds_opinions
-    Opinion.order(created_at: :desc).includes(:user, :copied).where({ user: [User.find(id, follows.select(:id).ids)]})
+    Opinion.order(created_at: :desc).includes(:user, :copied).where({ user: [User.find(id, follows.select(:id).ids)] })
   end
 
   def who_follow
@@ -23,11 +23,10 @@ class User < ApplicationRecord
 
   def copy_opi(opi)
     copy_opinion = if opi.copied_id.nil? || opi.created_at != opi.updated_at
-      opinions.build(text: opi.text, copied_id: opi.user_id)
-    else
-      opinions.build(text: opi.text, copied_id: opi.copied_id)
-    end
-
+                     opinions.build(text: opi.text, copied_id: opi.user_id)
+                   else
+                     opinions.build(text: opi.text, copied_id: opi.copied_id)
+                   end
     copy_opinion.save
   end
 end
