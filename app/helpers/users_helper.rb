@@ -2,7 +2,7 @@ module UsersHelper
   def follow_unfollow(user)
     cntnt = link_to 'Unfollow', following_path(user), method: :delete, class: 'textdec-none form-btn unfollow-btn align-self-center'
     return cntnt if current_user.follows.include?(user)
-    
+
     cntnt = link_to 'Follow', follow_path(user), class: 'textdec-none form-btn unfollow-btn align-self-center'
     return cntnt unless current_user.follows.include?(user) || current_user == user
 
@@ -38,37 +38,37 @@ module UsersHelper
   end
 
   def cover_photo(usr)
-    usr = set_user_images(usr)
+    usr = fill_user_images(usr)
     begin
       image_tag(usr.cover_image, border: 0, class: 'cover-img', alt: 'Cover_Image')
-    rescue
+    rescue Sprockets::Rails::Helper::AssetNotFound
       image_tag('https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/cover_default.jpg', border: 0, class: 'cover-img', alt: 'Cover_Image')
     end
   end
 
   def link_user_img(usr)
-    usr = set_user_images(usr)
+    usr = fill_user_images(usr)
     begin
       link_to image_tag(usr.photo, border: 0, class: 'rounded-circle who-photo mx-2 align-self-center', alt: usr.username), user_path(usr), class: 'align-self-center'
-    rescue
-      link_to image_tag('https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/user_default.png', border: 0, class: 'rounded-circle who-photo mx-2 align-self-center', alt: usr.username), user_path(usr), class: 'align-self-center'      
+    rescue Sprockets::Rails::Helper::AssetNotFound
+      link_to image_tag('https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/user_default.png', border: 0, class: 'rounded-circle who-photo mx-2 align-self-center', alt: usr.username), user_path(usr), class: 'align-self-center'
     end
   end
 
   def user_photo(opi)
-    opi.user = set_user_images(opi.user)
+    opi.user = fill_user_images(opi.user)
     begin
       image_tag(opi.user.photo, border: 0, class: 'timeline-photo', alt: 'User')
-    rescue 
+    rescue Sprockets::Rails::Helper::AssetNotFound
       image_tag('https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/user_default.png', border: 0, class: 'timeline-photo', alt: 'User')
     end
   end
 
   def profile_photo(usr)
-    usr = set_user_images(usr)
+    usr = fill_user_images(usr)
     begin
       image_tag(usr.photo, border: 0, class: 'profile-right p-2', alt: usr.username)
-    rescue
+    rescue Sprockets::Rails::Helper::AssetNotFound
       image_tag('https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/user_default.png', border: 0, class: 'profile-right p-2', alt: usr.username)
     end
   end

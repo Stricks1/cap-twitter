@@ -42,17 +42,17 @@ module ApplicationHelper
   end
 
   def current_profile(usr)
-    usr = set_user_images(usr)
+    usr = fill_user_images(usr)
     begin
-      image_tag(usr.photo, border: 0, class: 'profile p-2', alt: usr.username)      
-    rescue      
-      image_tag('https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/user_default.png', border: 0, class: 'profile p-2', alt: usr.username)      
+      image_tag(usr.photo, border: 0, class: 'profile p-2', alt: usr.username)
+    rescue Sprockets::Rails::Helper::AssetNotFound
+      image_tag('https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/user_default.png', border: 0, class: 'profile p-2', alt: usr.username)
     end
   end
 
-  def set_user_images(usr)
+  def fill_user_images(usr)
     usr.photo = 'https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/user_default.png' if usr.photo.blank?
     usr.cover_image = 'https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/cover_default.jpg' if usr.cover_image.blank?
-    return usr
+    usr
   end
 end
