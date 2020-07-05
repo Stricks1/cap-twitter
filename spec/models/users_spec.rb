@@ -75,14 +75,14 @@ RSpec.describe User, type: :model do
 
     it 'check user followed opinions' do
       @user.followeds_opinions
-      f = Opinion.order(created_at: :desc).find(2,1)
+      f = Opinion.order(created_at: :desc).find(2, 1)
       expect(@user.followeds_opinions.first).to eq(f.first)
       expect(@user.followeds_opinions.last).to eq(f.last)
     end
 
     it 'who follow show unfollowed users on desc created order' do
       @user.who_follow
-      f = User.order(created_at: :desc).find(2,3,4)
+      f = User.order(created_at: :desc).find(2, 3, 4)
       expect(@user.who_follow.first).to eq(f[0])
       expect(@user.who_follow).to include(f[1])
       expect(@user.who_follow.last).to eq(f[2])
