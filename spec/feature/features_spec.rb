@@ -94,6 +94,12 @@ RSpec.describe 'Opinions_features', type: :feature, feature: true do
       expect(page).to have_content('Unfollow rick')
     end
 
+    scenario 'create opinion message' do
+      fill_in 'opinion_text', with: 'This new opinion'
+      click_on('Send Opinion')
+      expect(page).to have_content('This new opinion')
+    end
+
     scenario 'copy (retweet) user message' do
       link = page.find("a .timeline-photo", match: :first).find(:xpath, '..')
       link.click
@@ -111,6 +117,7 @@ RSpec.describe 'Opinions_features', type: :feature, feature: true do
       link.click
       fill_in 'opinion_text', with: 'This was edited'
       click_on('Edit Opinion')
+      expect(page).to have_content('This was edited')
       expect(page).to have_content('Edited opinion copied from @rick')
     end
   end
