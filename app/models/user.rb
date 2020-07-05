@@ -14,20 +14,20 @@ class User < ApplicationRecord
   def who_follow
     ids = follows.select(:id).ids
     ids << id
-    User.order(created_at: :desc).where.not({id: [ids]})
+    User.order(created_at: :desc).where.not({ id: [ids] })
   end
 
   def unfollow(user)
     follows.destroy(user)
   end
 
-  def copy_opi(op)
-    if op.copied_id == nil || op.created_at != op.updated_at 
-      copy_opinion = opinions.build(text: op.text, copied_id: op.user_id)
+  def copy_opi(opi)
+    copy_opinion = if opi.copied_id.nil? || opi.created_at != opi.updated_at
+      opinions.build(text: opi.text, copied_id: opi.user_id)
     else
-      copy_opinion = opinions.build(text: op.text, copied_id: op.copied_id)
+      opinions.build(text: opi.text, copied_id: opi.copied_id)
     end
-    
+
     copy_opinion.save
   end
 end

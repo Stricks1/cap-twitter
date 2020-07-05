@@ -29,18 +29,16 @@ module OpinionsHelper
       cntnt.concat((link_to image_tag('https://raw.githubusercontent.com/Stricks1/cap-twitter/b3ee28c00f9504f9995a544ad14f2440b83f40a0/app/assets/images/pencil.svg', border: 0, class: 'edit-opinion'), edit_opinion_path(opi)))
       cntnt.concat((link_to 'x', opi, method: :delete, data: { confirm: 'Are you sure?' }, class: 'textdec-none ml-1'))
       cntnt.html_safe
-    else
-      if current_user && opi.user.username != current_user.username
-        cntnt.concat((link_to image_tag('https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/retweet.png', border: 0, class: 'edit-opinion'), retweet_path(opi)))
-        cntnt.html_safe
-      end
+    elsif current_user && opi.user.username != current_user.username
+      cntnt.concat((link_to image_tag('https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/retweet.png', border: 0, class: 'edit-opinion'), retweet_path(opi)))
+      cntnt.html_safe
     end
   end
 
   def copied_info(opi)
     return nil unless opi.copied
 
-    edited = !(opi.created_at == opi.updated_at)
+    edited = opi.created_at != opi.updated_at
     info = edited ? 'Edited opinion copied from @' : 'Opinion copied from @'
     info.concat(opi.copied.username)
     if current_user

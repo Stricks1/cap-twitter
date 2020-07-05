@@ -2,7 +2,7 @@ module UsersHelper
   def unfollow(user)
     cntnt = link_to 'Unfollow', following_path(user), method: :delete, class: 'textdec-none form-btn unfollow-btn align-self-center'
     return cntnt if current_user.follows.include?(user)
-  
+
     nil
   end
 
@@ -28,7 +28,7 @@ module UsersHelper
   def user_copied_info(opi)
     return nil unless opi.copied
 
-    edited = !(opi.created_at == opi.updated_at)
+    edited = opi.created_at != opi.updated_at
     info = edited ? 'Edited opinion copied from @' : 'Opinion copied from @'
     info.concat(opi.copied.username)
     link_to info, user_path(opi.copied)
