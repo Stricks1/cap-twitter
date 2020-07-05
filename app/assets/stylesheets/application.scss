@@ -144,12 +144,9 @@ body {
   margin: 10px;
 }
 
-.color-grey {
-  color: #386E9A;
-}
-
+.color-grey,
 .color-grey:hover {
-  color: #386E9A;
+  color: #386e9a;
 }
 
 .profile {
@@ -238,6 +235,7 @@ body {
 .right-tab-prof {
   padding-top: 2px;
   margin-top: 1px;
+  font-size: 0.75em;
 }
 
 .central-links {
@@ -267,7 +265,7 @@ body {
   font: 13px Arial, Helvetica, sans-serif;
   color: #888;
   margin-bottom: 5px;
-  margin-top: 10px;   
+  margin-top: 10px;
 }
 
 .form-text {
@@ -278,12 +276,12 @@ body {
   width: 100%;
   padding: 8px;
   border-radius: 6px;
-  -webkit-border-radius:6px;
-  -moz-border-radius:6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
   border: 2px solid #fff;
-  box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
-  -moz-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
-  -webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);   
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.33);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.33);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.33);
 }
 
 .error-sm {
@@ -299,18 +297,18 @@ body {
   -moz-border-radius: 5px;
   color: #fff;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.12);
-  -moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
-  -webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
-  box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+  -moz-box-shadow: inset 0 2px 2px 0 rgba(255, 255, 255, 0.17);
+  -webkit-box-shadow: inset 0 2px 2px 0 rgba(255, 255, 255, 0.17);
+  box-shadow: inset 0 2px 2px 0 rgba(255, 255, 255, 0.17);
   border: 1px solid #162730;
   font-size: 15px;
 }
 
 .form-btn:hover {
   background: #213346;
-  -moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
-  -webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
-  box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
+  -moz-box-shadow: inset 0 2px 2px 0 rgba(255, 255, 255, 0.28);
+  -webkit-box-shadow: inset 0 2px 2px 0 rgba(255, 255, 255, 0.28);
+  box-shadow: inset 0 2px 2px 0 rgba(255, 255, 255, 0.28);
 }
 
 .unfollow-btn {
@@ -324,13 +322,13 @@ body {
 
 #notice {
   color: white;
-  background-color: #6EE284;
+  background-color: #6ee284;
   font-size: 1.4em;
 }
 
 #alert {
   color: white;
-  background-color: #EE7979;
+  background-color: #ee7979;
   font-size: 1.4em;
 }
 
@@ -338,6 +336,7 @@ body {
   input {
     border: solid 1px red;
   }
+
   label {
     color: red;
   }
@@ -391,18 +390,25 @@ body {
   font-size: 0.8em;
 }
 
+.copied-opi {
+  font-size: 0.7em;
+}
+
 @media (min-width: 576px) {
   .bold-name {
     font-size: 1.2em;
     line-height: 1.2em;
   }
+
   .bold-flw {
     font-size: 0.8em;
     line-height: 1.2em;
   }
+
   .left-bold-txt {
     font-size: 1em;
   }
+
   .logo-left {
     font-size: 1.5em;
   }
@@ -413,11 +419,17 @@ body {
     font-size: 1.2em;
     line-height: 1.2em;
   }
+
   .username {
     font-size: 1em;
   }
+
   .profile-right {
     max-width: 150px;
     height: 106px;
+  }
+
+  .right-tab-prof {
+    font-size: 1em;
   }
 }

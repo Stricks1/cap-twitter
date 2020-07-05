@@ -1,13 +1,7 @@
 <div class='d-flex flex-column'>
   <% @users.each do |u| %>
    <div class='d-flex my-2 flex-column flex-md-row'>
-     <% if current_user %>
-     <a href=<%= user_path(u) %> >
-     <% end %>
-       <img src=<%= u.photo %> alt='User' class='rounded-circle who-photo mx-2 align-self-center' >
-     <% if current_user %>
-     </a>
-     <% end %>
+     <%= link_to image_tag(u.photo, border: 0, class: 'rounded-circle who-photo mx-2 align-self-center'), user_path(u), class: 'align-self-center' %>
      <div class='d-flex flex-column w-100 justify-content-center'>
          <span class='font-weight-bold text-dark text-center'>
            <%= u.full_name %>
@@ -15,9 +9,7 @@
        <span class='text-center'>@<%= u.username %></span>
       </div>
        <span class='mx-2 font-weight-bold align-self-center'>
-         <% unless current_user.follows.include?(u) || current_user == u %>
-           <%= link_to '+', follow_path(u), :class => "textdec-none circle-link" %>
-         <% end %>
+         <%= btn_follow(u) %>
        </span>
    </div>
   <% end %> 

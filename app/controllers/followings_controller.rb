@@ -6,7 +6,7 @@ class FollowingsController < ApplicationController
   def create
     @following = Following.new
     @user = User.find(params[:id])
-    if  @following.build_saving(@user, current_user)
+    if @following.build_saving(@user, current_user)
       flash[:notice] = "Success following #{@user.username}"
     else
       flash[:alert] = "Error to follow #{@user.username}"
@@ -24,8 +24,9 @@ class FollowingsController < ApplicationController
   end
 
   private
-    # Only allow a list of trusted parameters through.
-    def following_params
-      params.fetch(:following, {})
-    end
+
+  # Only allow a list of trusted parameters through.
+  def following_params
+    params.fetch(:following, {})
+  end
 end

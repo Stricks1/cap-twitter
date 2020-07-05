@@ -3,7 +3,7 @@
     <h1 class='text-center'>Login</h1>
     <%= form_tag sessions_path do |form| %>
       <%= label_tag :username, 'Username *', :class => 'form-label'  %>
-      <%= text_field_tag :username, nil, class: 'form-text', placeholder: 'Place your username...'  %>
+      <%= text_field_tag :username, nil, class: 'form-text', placeholder: 'Place your username...', autofocus: true %>
       <div class='actions mt-4'>
         <%= submit_tag 'Login', :class => 'form-btn'  %>
       </div>

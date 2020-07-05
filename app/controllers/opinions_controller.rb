@@ -9,7 +9,7 @@ class OpinionsController < ApplicationController
       @opinions = current_user.followeds_opinions
       @users = current_user.who_follow
     else
-      @opinions = Opinion.order(created_at: :desc).includes(:user)
+      @opinions = Opinion.order(created_at: :desc).includes(:user, :copied)
       @users = User.order(created_at: :desc)
     end
     @opinion = Opinion.new
@@ -70,19 +70,19 @@ class OpinionsController < ApplicationController
   end
 
   def retweet
-    @copy_opinion = current_user.opinions.build(text: @opinion.text)
-    @copy_opinion.save
+    current_user.copy_opi(@opinion)
     redirect_to opinions_path
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_opinion
-      @opinion = Opinion.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def opinion_params
-      params.require(:opinion).permit(:text)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_opinion
+    @opinion = Opinion.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def opinion_params
+    params.require(:opinion).permit(:text)
+  end
 end
