@@ -39,16 +39,14 @@ module ApplicationHelper
       ret = "<div><span id='notice' class='text-center d-block py-2'>"
       ret.concat(notice + '</span></div>')
       ret.concat("<div class='bg-main-grey d-flex row h-100-flash justify-content-center'>")
-      ret.html_safe
     elsif alert
       ret = "<div><span id='alert' class='text-center d-block py-2'>"
       ret.concat(alert + '</span></div>')
       ret.concat("<div class='bg-main-grey d-flex row h-100-flash justify-content-center'>")
-      ret.html_safe
     else
       ret = "<div class='bg-main-grey d-flex row h-100 justify-content-center'>"
-      ret.html_safe
     end
+    ret.html_safe
   end
 
   def current_profile(usr)
