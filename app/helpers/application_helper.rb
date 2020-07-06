@@ -45,7 +45,7 @@ module ApplicationHelper
       ret.concat(alert + '</span></div>')
       ret.concat("<div class='bg-main-grey d-flex row h-100-flash justify-content-center'>")
       ret.html_safe
-    elsif 
+    else
       ret = "<div class='bg-main-grey d-flex row h-100 justify-content-center'>"
       ret.html_safe
     end
@@ -69,10 +69,10 @@ module ApplicationHelper
   def image_exists?(url)
     response = {}
     uri = URI(url)
-    Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
+    Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == 'https') do |http|
       request = Net::HTTP::Get.new uri
       response = http.request request # Net::HTTPResponse object
     end
-    return response.content_type.starts_with?("image")
+    response.content_type.starts_with?('image')
   end
 end
