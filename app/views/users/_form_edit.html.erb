@@ -19,7 +19,10 @@
     <div class='error-sm'><%= message %></div>
   <% end %> 
 
-  <div class='actions mt-4'>
+  <div class='actions mt-4 justify-content-between d-flex'>
     <%= form.submit 'Update Account', :class => 'form-btn' %>
+    <%= link_to 'Delete User', @user, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'form-btn' %>
   </div>
+
+      
 <% end %>
