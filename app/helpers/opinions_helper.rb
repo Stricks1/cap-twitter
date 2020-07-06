@@ -11,13 +11,13 @@ module OpinionsHelper
     opi.user = fill_user_images(opi.user)
     if current_user
       begin
-        link_to image_tag(opi.user.photo, class: 'timeline-photo', alt: opi.user.username), user_path(opi.user)
+        link_to image_tag(opi.user.photo, class: 'timeline-photo', alt: opi.user.username, onerror: 'imgErrorPhoto(this);'), user_path(opi.user)
       rescue Sprockets::Rails::Helper::AssetNotFound
         link_to image_tag('https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/user_default.png', class: 'timeline-photo', alt: opi.user.username), user_path(opi.user)
       end
     else
       begin
-        image_tag(opi.user.photo, class: 'timeline-photo', alt: opi.user.username)
+        image_tag(opi.user.photo, class: 'timeline-photo', alt: opi.user.username, onerror: 'imgErrorPhoto(this);')
       rescue Sprockets::Rails::Helper::AssetNotFound
         image_tag('https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/user_default.png', class: 'timeline-photo', alt: opi.user.username)
       end
@@ -28,13 +28,13 @@ module OpinionsHelper
     usr = fill_user_images(usr)
     if current_user
       begin
-        link_to image_tag(usr.photo, class: 'rounded-circle who-photo mx-2 align-self-center', alt: usr.username), user_path(usr), class: 'align-self-center'
+        link_to image_tag(usr.photo, class: 'rounded-circle who-photo mx-2 align-self-center', alt: usr.username, onerror: 'imgErrorPhoto(this);'), user_path(usr), class: 'align-self-center'
       rescue Sprockets::Rails::Helper::AssetNotFound
         link_to image_tag('https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/user_default.png', class: 'rounded-circle who-photo mx-2 align-self-center', alt: usr.username), user_path(usr), class: 'align-self-center'
       end
     else
       begin
-        image_tag(usr.photo, class: 'rounded-circle who-photo mx-2 align-self-center', alt: usr.username)
+        image_tag(usr.photo, class: 'rounded-circle who-photo mx-2 align-self-center', alt: usr.username, onerror: 'imgErrorPhoto(this);')
       rescue Sprockets::Rails::Helper::AssetNotFound
         image_tag('https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/user_default.png', class: 'rounded-circle who-photo mx-2 align-self-center', alt: usr.username)
       end

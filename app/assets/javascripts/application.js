@@ -14,3 +14,15 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+function imgErrorPhoto(image) {
+  image.onerror = '';
+  image.src = 'https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/user_default.png';
+  return true;
+}
+
+function imgErrorCover(image) {
+  image.onerror = '';
+  image.src = 'https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/cover_default.jpg';
+  return true;
+}

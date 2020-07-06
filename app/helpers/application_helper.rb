@@ -1,7 +1,3 @@
-require 'resolv-replace'
-require 'net/http'
-require 'uri'
-
 module ApplicationHelper
   def header_bar
     cntnt = "<a href='/opinions'>"
@@ -52,27 +48,15 @@ module ApplicationHelper
   def current_profile(usr)
     usr = fill_user_images(usr)
     begin
-      image_tag(usr.photo, class: 'profile p-2', alt: usr.username)
+      image_tag(usr.photo, class: 'profile p-2', alt: usr.username, onerror: 'imgErrorPhoto(this);')
     rescue Sprockets::Rails::Helper::AssetNotFound
       image_tag('https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/user_default.png', class: 'profile p-2', alt: usr.username)
     end
   end
 
   def fill_user_images(usr)
-#    usr.photo = 'https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/user_default.png' if usr.photo.blank? || !image_exists?(usr.photo)
-#    usr.cover_image = 'https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/cover_default.jpg' if usr.cover_image.blank? || !image_exists?(usr.cover_image)
     usr.photo = 'https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/user_default.png' if usr.photo.blank?
     usr.cover_image = 'https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/cover_default.jpg' if usr.cover_image.blank?
     usr
   end
-
-#  def image_exists?(url)
-#    response = {}
-#    uri = URI(url)
-#    Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == 'https') do |http|
-#      request = Net::HTTP::Get.new uri
-#      response = http.request request # Net::HTTPResponse object
-#    end
-#    response.content_type.starts_with?('image')
-#  end
 end
