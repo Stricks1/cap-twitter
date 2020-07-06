@@ -14,8 +14,10 @@ The functionality to follow/unfollow is very intuitive. '+' buttons to follow cl
 
 # Screen Home Page
 
+## Main Page
 ![Screenshot Main Page](./app/assets/images/mainPage.png)
 
+## User Page
 ![Screenshot Profile Page](./app/assets/images/userPage.png)
 
 
