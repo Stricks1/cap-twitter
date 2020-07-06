@@ -1,6 +1,6 @@
 <%= form_with(model: user, local: true) do |form| %>
 
-  <%= form.label :username, 'Username *', :class => 'form-label'  %>
+  <%= form.label :username, 'Username (case sensitive)*', :class => 'form-label'  %>
   <%= form.text_field :username, :class => 'form-text', placeholder: 'Username here...', autofocus: true %>
   <% user.errors.messages[:username].each do |message| %>
     <div class='error-sm'><%= message %></div>

@@ -26,6 +26,10 @@ body {
   padding-left: 0;
 }
 
+.h-100-flash {
+  height: calc(100% - 50px);
+}
+
 .row {
   margin: 0;
 }
@@ -308,6 +312,8 @@ body {
   -moz-box-shadow: inset 0 2px 2px 0 rgba(255, 255, 255, 0.28);
   -webkit-box-shadow: inset 0 2px 2px 0 rgba(255, 255, 255, 0.28);
   box-shadow: inset 0 2px 2px 0 rgba(255, 255, 255, 0.28);
+  text-decoration: none;
+  color: #fff;
 }
 
 .unfollow-btn {
