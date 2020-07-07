@@ -21,10 +21,8 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1/edit
-  def edit; 
-    unless current_user == @user
-      redirect_to edit_user_path(current_user)
-    end
+  def edit;
+    redirect_to edit_user_path(current_user) unless current_user == @user
   end
 
   # POST /users

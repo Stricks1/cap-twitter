@@ -1,5 +1,5 @@
 class FollowingsController < ApplicationController
-  before_action :set_user, only: %i[create, destroy]
+  before_action :set_user, only: %i[create destroy]
   before_action :authenticate_user!
 
   # POST /followings/user
