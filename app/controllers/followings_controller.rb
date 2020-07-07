@@ -1,4 +1,5 @@
 class FollowingsController < ApplicationController
+  before_action :set_user, only: %i[create, destroy]
   before_action :authenticate_user!
 
   # POST /followings/user
@@ -17,7 +18,6 @@ class FollowingsController < ApplicationController
   # DELETE /followings/1
   # DELETE /followings/1.json
   def destroy
-    @user = User.find(params[:id])
     current_user.unfollow(@user)
     flash[:notice] = "Unfollow #{@user.username}"
     redirect_to request.referer
@@ -25,6 +25,10 @@ class FollowingsController < ApplicationController
 
   private
 
+  def set_user
+    @user = User.find(params[:id])
+  end
+  
   # Only allow a list of trusted parameters through.
   def following_params
     params.fetch(:following, {})
