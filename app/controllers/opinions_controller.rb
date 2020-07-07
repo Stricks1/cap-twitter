@@ -37,10 +37,8 @@ class OpinionsController < ApplicationController
     respond_to do |format|
       if @opinion.save
         format.html { redirect_to opinions_path, notice: 'Opinion was successfully created.' }
-        format.json { render :show, status: :created, location: @opinion }
       else
         format.html { render :index }
-        format.json { render json: @opinion.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -51,10 +49,8 @@ class OpinionsController < ApplicationController
     respond_to do |format|
       if @opinion.update(opinion_params)
         format.html { redirect_to opinions_path, notice: 'Opinion was successfully updated.' }
-        format.json { render :show, status: :ok, location: @opinion }
       else
         format.html { render :edit }
-        format.json { render json: @opinion.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -65,7 +61,6 @@ class OpinionsController < ApplicationController
     @opinion.destroy
     respond_to do |format|
       format.html { redirect_to request.referer, notice: 'Opinion was successfully deleted.' }
-      format.json { head :no_content }
     end
   end
 

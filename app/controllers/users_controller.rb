@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1/edit
-  def edit;
+  def edit
     redirect_to edit_user_path(current_user) unless current_user == @user
   end
 
@@ -35,10 +35,8 @@ class UsersController < ApplicationController
         session[:user_id] = @user.id
         session[:username] = @user.username
         format.html { redirect_to opinions_path, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -49,10 +47,8 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to opinions_path, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -63,7 +59,6 @@ class UsersController < ApplicationController
     @user.destroy
     respond_to do |format|
       format.html { redirect_to logout_path, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
