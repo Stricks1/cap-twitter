@@ -11,7 +11,6 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(params[:id])
     @opinions = Opinion.order(created_at: :desc).includes(:user, :copied).where({ user: [@user] })
     @users = @user.followds
   end
@@ -22,7 +21,11 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1/edit
-  def edit; end
+  def edit; 
+    unless current_user == @user
+      redirect_to edit_user_path(current_user)
+    end
+  end
 
   # POST /users
   # POST /users.json
