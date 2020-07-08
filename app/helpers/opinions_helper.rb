@@ -72,4 +72,25 @@ module OpinionsHelper
 
     nil
   end
+
+  def form_edit_info(opinion)
+    if current_user == opinion.user
+      cntnt = "<div class='bg-white w-75 border rounded-border p-3 my-4 color-light-grey'>"
+      cntnt.concat("<p class='font-weight-bold'>CORRECT YOUR OPINION</p>")
+      cntnt.concat(form_with(model: opinion, local: true, html: {method: "patch"}))
+      form_with(model: opinion, local: true) do |form|
+        cntnt.concat(form.text_area :text, class: 'form-text', placeholder: 'Give your opinion...', autofocus: true)
+        opinion.errors.messages[:text].each do |message|
+          cntnt.concat("<div class='error-sm'>")
+          cntnt.concat(message)
+          cntnt.concat('</div>')
+        end  
+        cntnt.concat("<div class='actions mt-4'>")
+        cntnt.concat(form.submit 'Edit Opinion', class: 'form-btn')
+        cntnt.concat('</div>')
+      end
+      cntnt.concat('</div>')
+      cntnt.html_safe
+    end
+  end
 end
