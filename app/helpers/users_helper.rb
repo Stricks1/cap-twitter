@@ -72,4 +72,16 @@ module UsersHelper
       image_tag('https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/user_default.png', class: 'profile-right p-2', alt: usr.username)
     end
   end
+
+  def link_follow(current, usr)
+    unless current.follows.include?(usr) || current == usr
+      link_to '+', follow_path(usr), :class => 'textdec-none circle-link'
+    end
+  end
+
+  def link_unfollow(usr)
+    if current_user.follows.include?(usr) 
+      link_to '-', following_path(usr), method: :delete, :class => 'textdec-none circle-link'
+    end
+  end
 end
