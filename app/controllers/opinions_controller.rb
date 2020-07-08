@@ -25,7 +25,9 @@ class OpinionsController < ApplicationController
   end
 
   # GET /opinions/1/edit
-  def edit; end
+  def edit
+    redirect_to opinions_path unless current_user == @opinion.user
+  end
 
   # POST /opinions
   # POST /opinions.json
@@ -74,6 +76,9 @@ class OpinionsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_opinion
     @opinion = Opinion.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = "Nonexistent post id"
+    redirect_to opinions_path
   end
 
   # Only allow a list of trusted parameters through.

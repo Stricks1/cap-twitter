@@ -1,4 +1,4 @@
-<% if current_user %>
+<% if current_user == opinion.user %>
   <div class='bg-white w-75 border rounded-border p-3 my-4 color-light-grey'>
     <p class='font-weight-bold'>CORRECT YOUR OPINION</p>
     <%= form_with(model: opinion, local: true) do |form| %>
