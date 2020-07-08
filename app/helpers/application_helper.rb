@@ -61,11 +61,11 @@ module ApplicationHelper
   end
 
   def user_info(usr)
-    if usr
-      cntnt = user_info_logged(usr)
-    else
-      cntnt = "<div class='col-12 d-flex flex-column min-vh-100'>"
-    end
+    cntnt = if usr
+              user_info_logged(usr)
+            else
+              "<div class='col-12 d-flex flex-column min-vh-100'>"
+            end
     cntnt.html_safe
   end
 
