@@ -6,7 +6,6 @@ class FollowingsController < ApplicationController
   # POST /followings/user.json
   def create
     @following = Following.new
-    @user = User.find(params[:id])
     if @following.build_saving(@user, current_user)
       flash[:notice] = "Success following #{@user.username}"
     else
