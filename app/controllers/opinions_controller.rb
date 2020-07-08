@@ -77,7 +77,7 @@ class OpinionsController < ApplicationController
   def set_opinion
     @opinion = Opinion.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    flash[:alert] = "Nonexistent post id"
+    flash[:alert] = 'Nonexistent post id'
     redirect_to opinions_path
   end
 
