@@ -8,13 +8,15 @@ class User < ApplicationRecord
   has_many :followds, through: :followeds, source: :follower
 
   def followeds_opinions
-    Opinion.order(created_at: :desc).includes(:user, :copied).where({ user: [User.find(id, follows.select(:id).ids)] })
+    ids = follows.select(:id).ids
+    ids << id
+    Opinion.ordered_opinion.include_user_copied.user_filter_Opinion(User.user_and_following(ids))
   end
 
   def who_follow
     ids = follows.select(:id).ids
     ids << id
-    User.order(created_at: :desc).where.not({ id: [ids] })
+    User.ordered_users.user_who_follow(ids)
   end
 
   def unfollow(user)
@@ -29,4 +31,8 @@ class User < ApplicationRecord
                    end
     copy_opinion.save
   end
+
+  scope :ordered_users, -> { order(created_at: :desc) }
+  scope :user_and_following, -> (ids) { where(id: ids) }
+  scope :user_who_follow, -> (ids) { where.not(id: ids) }
 end

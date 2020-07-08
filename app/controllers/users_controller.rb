@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @opinions = Opinion.order(created_at: :desc).includes(:user, :copied).where({ user: [@user] })
+    @opinions = Opinion.ordered_opinion.include_user_copied.user_filter_Opinion(@user)
     @users = @user.followds
   end
 
