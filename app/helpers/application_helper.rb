@@ -59,4 +59,67 @@ module ApplicationHelper
     usr.cover_image = 'https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/cover_default.jpg' if usr.cover_image.blank?
     usr
   end
+
+  def user_info(usr)
+    if usr
+      cntnt = user_info_logged(usr)
+    else
+      cntnt = "<div class='col-12 d-flex flex-column min-vh-100'>"
+    end
+    cntnt.html_safe
+  end
+
+  def user_info_logged(usr)
+    cntnt = "<div class='bg-left-bt-tab col-4 col-md-3'>"
+    cntnt.concat("<div class='d-flex flex-column'>")
+    cntnt.concat("<div class='d-flex bg-left-tab'>")
+    cntnt.concat(current_profile(usr))
+    cntnt.concat("<span class='align-self-center bold-name'>")
+    cntnt.concat(usr.full_name)
+    cntnt.concat("</span>")
+    cntnt.concat("</div>")
+    cntnt.concat("<div class='d-flex justify-content-between bg-left-tab'>")
+    cntnt.concat("<div class='w-50 border-dark-bl-1 py-2'>")
+    cntnt.concat("<span class='text-center d-block light-color'>")
+    cntnt.concat(usr.followers.count.to_s)
+    cntnt.concat("</span>")
+    cntnt.concat("<span class='text-center d-block bold-flw'>Following</span>")
+    cntnt.concat("</div>")
+    cntnt.concat("<div class='w-50 border-dark-bl-2 py-2'>")
+    cntnt.concat("<span class='text-center d-block light-color'>")
+    cntnt.concat(usr.followeds.count.to_s)
+    cntnt.concat("</span>")
+    cntnt.concat("<span class='text-center d-block bold-flw'>Followers</span>")
+    cntnt.concat("</div>")
+    cntnt.concat("</div>")
+    cntnt.concat("<div>")
+    cntnt.concat("<a href='")
+    cntnt.concat(opinions_path)
+    cntnt.concat("' class='d-block left-links d-flex p-4'>")
+    cntnt.concat("<i class='fa fa-ticket logo-left px-2' aria-hidden='true'></i>")
+    cntnt.concat("<span class='left-bold-txt'>home</span>")
+    cntnt.concat("</a>")
+    cntnt.concat("<a href='#' class='d-block left-links d-flex p-4'>")
+    cntnt.concat("<i class='fa fa-at logo-left px-2' aria-hidden='true'></i>")
+    cntnt.concat("<span class='left-bold-txt'>connect</span>")
+    cntnt.concat("</a>")
+    cntnt.concat("<a href='#' class='d-block left-links d-flex p-4'>")
+    cntnt.concat("<i class='fa fa-hashtag logo-left px-2' aria-hidden='true'></i>")
+    cntnt.concat("<span class='left-bold-txt'>discover</span>")
+    cntnt.concat("</a>")
+    cntnt.concat("<a href='")
+    cntnt.concat(user_path(usr))
+    cntnt.concat("' class='d-block left-links d-flex p-4'>")
+    cntnt.concat("<i class='fa fa-user logo-left px-2' aria-hidden='true'></i>")
+    cntnt.concat("<span class='left-bold-txt'>profile</span>")
+    cntnt.concat("</a>")
+    cntnt.concat("<a href='#' class='d-block left-links d-flex p-4'>")
+    cntnt.concat("<i class='fa fa-pie-chart logo-left px-2' aria-hidden='true'></i>")
+    cntnt.concat("<span class='left-bold-txt'>statistics</span>")
+    cntnt.concat("</a>")
+    cntnt.concat("</div>")
+    cntnt.concat("</div>")
+    cntnt.concat("</div>")
+    cntnt.concat("<div class='col-8 col-md-9 d-flex flex-column min-vh-100'>")
+  end
 end
