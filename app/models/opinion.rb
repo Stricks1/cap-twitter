@@ -5,5 +5,5 @@ class Opinion < ApplicationRecord
 
   scope :ordered_opinion, -> { order(created_at: :desc) }
   scope :include_user_copied, -> { includes(:user, :copied) }
-  scope :user_filter_Opinion, -> (user) { where(user: user) }
+  scope :user_filter_Opinion, ->(user) { where(user: user) }
 end

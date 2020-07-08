@@ -33,6 +33,6 @@ class User < ApplicationRecord
   end
 
   scope :ordered_users, -> { order(created_at: :desc) }
-  scope :user_and_following, -> (ids) { where(id: ids) }
-  scope :user_who_follow, -> (ids) { where.not(id: ids) }
+  scope :user_and_following, ->(ids) { where(id: ids) }
+  scope :user_who_follow, ->(ids) { where.not(id: ids) }
 end
