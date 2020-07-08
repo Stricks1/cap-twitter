@@ -65,7 +65,7 @@ module OpinionsHelper
   def op_btn_follow(usr)
     return nil unless current_user
 
-    link = link_to '+', follow_path(usr), class: 'textdec-none circle-link'
+    link_to '+', follow_path(usr), class: 'textdec-none circle-link'
   end
 
   def form_edit_info(opinion)
