@@ -59,58 +59,53 @@ module OpinionsHelper
     edited = opi.created_at != opi.updated_at
     info = edited ? 'Edited opinion copied from @' : 'Opinion copied from @'
     info.concat(opi.copied.username)
-    if current_user
-      link_to info, user_path(opi.copied)
-    else
-      info
-    end
+    current_user ? (link_to info, user_path(opi.copied)) : info
   end
 
   def op_btn_follow(usr)
-    link = link_to '+', follow_path(usr), class: 'textdec-none circle-link'
-    return link if current_user
+    return nil unless current_user
 
-    nil
+    link = link_to '+', follow_path(usr), class: 'textdec-none circle-link'
   end
 
   def form_edit_info(opinion)
-    if current_user == opinion.user
-      cntnt = "<div class='bg-white w-75 border rounded-border p-3 my-4 color-light-grey'>"
-      cntnt.concat("<p class='font-weight-bold'>CORRECT YOUR OPINION</p>")
-      cntnt.concat(form_with(model: opinion, local: true, html: {method: "patch"}))
-      form_with(model: opinion, local: true) do |form|
-        cntnt.concat(form.text_area :text, class: 'form-text', placeholder: 'Give your opinion...', autofocus: true)
-        opinion.errors.messages[:text].each do |message|
-          cntnt.concat("<div class='error-sm'>")
-          cntnt.concat(message)
-          cntnt.concat('</div>')
-        end  
-        cntnt.concat("<div class='actions mt-4'>")
-        cntnt.concat(form.submit 'Edit Opinion', class: 'form-btn')
+    return unless current_user == opinion.user
+
+    cntnt = "<div class='bg-white w-75 border rounded-border p-3 my-4 color-light-grey'>"
+    cntnt.concat("<p class='font-weight-bold'>CORRECT YOUR OPINION</p>")
+    cntnt.concat(form_with(model: opinion, local: true, html: { method: 'patch' }))
+    form_with(model: opinion, local: true) do |form|
+      cntnt.concat((form.text_area :text, class: 'form-text', placeholder: 'Give your opinion...', autofocus: true))
+      opinion.errors.messages[:text].each do |message|
+        cntnt.concat("<div class='error-sm'>")
+        cntnt.concat(message)
         cntnt.concat('</div>')
       end
+      cntnt.concat("<div class='actions mt-4'>")
+      cntnt.concat((form.submit 'Edit Opinion', class: 'form-btn'))
       cntnt.concat('</div>')
-      cntnt.html_safe
     end
+    cntnt.concat('</div>')
+    cntnt.html_safe
   end
 
   def form_opinion(opinion)
-    if current_user
-      cntnt = "<div class='bg-white w-75 border rounded-border p-3 my-4 color-light-grey'><p class='font-weight-bold'>WRITE ABOUT A MOVIE</p>"
-      cntnt.concat(form_with(model: opinion, local: true))
-      form_with(model: opinion, local: true) do |form|  
-        cntnt.concat(form.text_area :text, class: 'form-text', placeholder: 'Give your opinion...', autofocus: true)
-        opinion.errors.messages[:text].each do |message|
-          cntnt.concat("<div class='error-sm'>")
-          cntnt.concat(message)
-          cntnt.concat('</div>')
-        end  
-        cntnt.concat("<div class='actions mt-4'>")
-        cntnt.concat(form.submit 'Send Opinion', class: 'form-btn')
+    return unless current_user
+
+    cntnt = "<div class='bg-white w-75 border rounded-border p-3 my-4 color-light-grey'><p class='font-weight-bold'>WRITE ABOUT A MOVIE</p>"
+    cntnt.concat(form_with(model: opinion, local: true))
+    form_with(model: opinion, local: true) do |form|
+      cntnt.concat((form.text_area :text, class: 'form-text', placeholder: 'Give your opinion...', autofocus: true))
+      opinion.errors.messages[:text].each do |message|
+        cntnt.concat("<div class='error-sm'>")
+        cntnt.concat(message)
         cntnt.concat('</div>')
-      end 
+      end
+      cntnt.concat("<div class='actions mt-4'>")
+      cntnt.concat((form.submit 'Send Opinion', class: 'form-btn'))
       cntnt.concat('</div>')
-      cntnt.html_safe
     end
+    cntnt.concat('</div>')
+    cntnt.html_safe
   end
 end
