@@ -74,14 +74,10 @@ module UsersHelper
   end
 
   def link_follow(current, usr)
-    unless current.follows.include?(usr) || current == usr
-      link_to '+', follow_path(usr), :class => 'textdec-none circle-link'
-    end
+    return link_to '+', follow_path(usr), class: 'textdec-none circle-link' unless current.follows.include?(usr) || current == usr
   end
 
   def link_unfollow(usr)
-    if current_user.follows.include?(usr) 
-      link_to '-', following_path(usr), method: :delete, :class => 'textdec-none circle-link'
-    end
+    return link_to '-', following_path(usr), method: :delete, class: 'textdec-none circle-link' if current_user.follows.include?(usr)
   end
 end
