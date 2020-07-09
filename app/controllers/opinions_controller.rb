@@ -9,8 +9,8 @@ class OpinionsController < ApplicationController
       @opinions = current_user.followeds_opinions
       @users = current_user.who_follow
     else
-      @opinions = Opinion.order(created_at: :desc).includes(:user, :copied)
-      @users = User.order(created_at: :desc)
+      @opinions = Opinion.ordered_opinion.include_user_copied
+      @users = User.ordered_users
     end
     @opinion = Opinion.new
   end
@@ -25,7 +25,9 @@ class OpinionsController < ApplicationController
   end
 
   # GET /opinions/1/edit
-  def edit; end
+  def edit
+    redirect_to opinions_path unless current_user == @opinion.user
+  end
 
   # POST /opinions
   # POST /opinions.json
@@ -37,10 +39,8 @@ class OpinionsController < ApplicationController
     respond_to do |format|
       if @opinion.save
         format.html { redirect_to opinions_path, notice: 'Opinion was successfully created.' }
-        format.json { render :show, status: :created, location: @opinion }
       else
         format.html { render :index }
-        format.json { render json: @opinion.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -51,10 +51,8 @@ class OpinionsController < ApplicationController
     respond_to do |format|
       if @opinion.update(opinion_params)
         format.html { redirect_to opinions_path, notice: 'Opinion was successfully updated.' }
-        format.json { render :show, status: :ok, location: @opinion }
       else
         format.html { render :edit }
-        format.json { render json: @opinion.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -65,7 +63,6 @@ class OpinionsController < ApplicationController
     @opinion.destroy
     respond_to do |format|
       format.html { redirect_to request.referer, notice: 'Opinion was successfully deleted.' }
-      format.json { head :no_content }
     end
   end
 
@@ -79,6 +76,9 @@ class OpinionsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_opinion
     @opinion = Opinion.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = 'Nonexistent post id'
+    redirect_to opinions_path
   end
 
   # Only allow a list of trusted parameters through.

@@ -1,12 +1,8 @@
 <div class='d-flex flex-column w-100'>
   <div class='d-flex justify-content-center align-items-center flex-column flex-md-row'>
-    <% unless current_user.follows.include?(@user) || current_user == @user %>
-      <%= link_to '+', follow_path(@user), :class => "textdec-none circle-link" %>
-    <% end %>
+    <%= link_follow(current_user, @user) %>
     <%= profile_photo(@user) %>
-    <% if current_user.follows.include?(@user) %>
-      <%= link_to '-', following_path(user), method: :delete, :class => "textdec-none circle-link" %>
-    <% end %>
+    <%= link_unfollow(@user)%>
   </div>
   <span class='align-self-center bold-name-right text-dark text-center mt-1'><%= @user.full_name %></span>
   <span class='align-self-center username text-center color-light-grey'>@<%= @user.username %></span>

@@ -1,5 +1,8 @@
 {
   "name": "cap-twitter",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "stylelint-csstree-validator": "^1.8.0"
+  }
 }

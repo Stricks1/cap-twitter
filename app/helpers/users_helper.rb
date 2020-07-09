@@ -72,4 +72,16 @@ module UsersHelper
       image_tag('https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/user_default.png', class: 'profile-right p-2', alt: usr.username)
     end
   end
+
+  def link_follow(current, usr)
+    return link_to '+', follow_path(usr), class: 'textdec-none circle-link' unless current.follows.include?(usr) || current == usr
+  end
+
+  def link_unfollow(usr)
+    return link_to '-', following_path(usr), method: :delete, class: 'textdec-none circle-link' if current_user.follows.include?(usr)
+  end
+
+  def class_follower_following(opt)
+    opt ? "<div class='d-flex flex-column following'>" : "<div class='d-flex flex-column followed'>"
+  end
 end

@@ -86,6 +86,12 @@ GEM
     diff-lcs (1.4.3)
     erubi (1.9.0)
     execjs (2.7.0)
+    factory_bot (6.1.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.1.0)
+      factory_bot (~> 6.1.0)
+      railties (>= 5.0.0)
+    ffaker (2.15.0)
     ffi (1.13.1)
     font-awesome-rails (4.7.0.5)
       railties (>= 3.2, < 6.1)
@@ -244,6 +250,8 @@ DEPENDENCIES
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)
+  factory_bot_rails (~> 6.1)
+  ffaker
   font-awesome-rails
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :users
-  resources :opinions
+  resources :users, except: %i[index]
+  resources :opinions, except: %i[show]
   resources :followings, only: %i[destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'opinions#index'

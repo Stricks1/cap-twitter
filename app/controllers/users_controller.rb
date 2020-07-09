@@ -11,9 +11,9 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(params[:id])
-    @opinions = Opinion.order(created_at: :desc).includes(:user, :copied).where({ user: [@user] })
+    @opinions = Opinion.ordered_opinion.include_user_copied.user_filter_Opinion(@user)
     @users = @user.followds
+    @users2 = @user.follows
   end
 
   # GET /users/new
@@ -22,7 +22,9 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1/edit
-  def edit; end
+  def edit
+    redirect_to edit_user_path(current_user) unless current_user == @user
+  end
 
   # POST /users
   # POST /users.json
@@ -34,10 +36,8 @@ class UsersController < ApplicationController
         session[:user_id] = @user.id
         session[:username] = @user.username
         format.html { redirect_to opinions_path, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -48,10 +48,8 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to opinions_path, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -62,7 +60,6 @@ class UsersController < ApplicationController
     @user.destroy
     respond_to do |format|
       format.html { redirect_to logout_path, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
@@ -71,6 +68,9 @@ class UsersController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_user
     @user = User.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = 'Nonexistent user id'
+    redirect_to opinions_path
   end
 
   # Only allow a list of trusted parameters through.

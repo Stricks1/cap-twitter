@@ -59,4 +59,33 @@ module ApplicationHelper
     usr.cover_image = 'https://raw.githubusercontent.com/Stricks1/cap-twitter/feature/app/assets/images/cover_default.jpg' if usr.cover_image.blank?
     usr
   end
+
+  def user_info(usr)
+    cntnt = if usr
+              user_info_logged(usr)
+            else
+              "<div class='col-12 d-flex flex-column min-vh-100'>"
+            end
+    cntnt.html_safe
+  end
+
+  def user_info_logged(usr)
+    cntnt = "<div class='bg-left-bt-tab col-4 col-md-3'><div class='d-flex flex-column'><div class='d-flex bg-left-tab'>"
+    cntnt.concat(current_profile(usr))
+    cntnt.concat("<span class='align-self-center bold-name'>")
+    cntnt.concat(usr.full_name)
+    cntnt.concat("</span></div><div class='d-flex justify-content-between bg-left-tab'><div class='w-50 border-dark-bl-1 py-2'><span class='text-center d-block light-color'>")
+    cntnt.concat(usr.followers.count.to_s)
+    cntnt.concat("</span><span class='text-center d-block bold-flw'>Following</span></div><div class='w-50 border-dark-bl-2 py-2'><span class='text-center d-block light-color'>")
+    cntnt.concat(usr.followeds.count.to_s)
+    cntnt.concat("</span><span class='text-center d-block bold-flw'>Followers</span></div></div><div><a href='")
+    cntnt.concat(opinions_path)
+    cntnt.concat("' class='d-block left-links d-flex p-4'><i class='fa fa-ticket logo-left px-2' aria-hidden='true'></i><span class='left-bold-txt'>home</span></a><a href='#' class='d-block left-links d-flex p-4'><i class='fa fa-at logo-left px-2' aria-hidden='true'></i>")
+    cntnt.concat("<span class='left-bold-txt'>connect</span></a><a href='#' class='d-block left-links d-flex p-4'><i class='fa fa-hashtag logo-left px-2' aria-hidden='true'></i><span class='left-bold-txt'>discover</span></a><a href='")
+    cntnt.concat(user_path(usr))
+    cntnt.concat("' class='d-block left-links d-flex p-4'><i class='fa fa-user logo-left px-2' aria-hidden='true'></i><span class='left-bold-txt'>profile</span></a>")
+    cntnt.concat("<a href='#' class='d-block left-links d-flex p-4'>")
+    cntnt.concat("<i class='fa fa-pie-chart logo-left px-2' aria-hidden='true'></i>")
+    cntnt.concat("<span class='left-bold-txt'>statistics</span></a></div></div></div><div class='col-8 col-md-9 d-flex flex-column min-vh-100'>")
+  end
 end
