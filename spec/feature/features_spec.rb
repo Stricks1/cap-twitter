@@ -14,7 +14,7 @@ RSpec.describe 'Opinions_features', type: :feature, feature: true do
   let(:op2) { build(:opinion, user_id: user5.id) }
   let(:op3) { build(:opinion, user_id: user3.id) }
 
-  context 'logged in user' do
+  context 'Logged in user' do
     before do
       user.save
       user2.save
@@ -33,35 +33,35 @@ RSpec.describe 'Opinions_features', type: :feature, feature: true do
       find('.form-btn', match: :first).click
     end
 
-    it 'log_in valid' do
+    it 'Log_in valid' do
       expect(page).to have_content('Logged in!')
     end
 
-    scenario 'follow user, showing success on opinion page' do
+    scenario 'Follow user, showing success on opinion page' do
       click_on('+', match: :first)
       expect(page).to have_content("Success following #{user4.username}")
     end
 
-    scenario 'click user, showing user profile page' do
+    scenario 'Click user, showing user profile page' do
       link = page.find('a .timeline-photo', match: :first).find(:xpath, '..')
       link.click
       expect(page).to have_content("All #{user5.full_name} Opinions")
     end
 
-    scenario 'unfollow user, showing success message' do
+    scenario 'Unfollow user, showing success message' do
       link = page.find('a .timeline-photo', match: :first).find(:xpath, '..')
       link.click
       click_on('Unfollow')
       expect(page).to have_content("Unfollow #{user5.username}")
     end
 
-    scenario 'create opinion message' do
+    scenario 'Create opinion message' do
       fill_in 'opinion_text', with: 'This new opinion'
       click_on('Send Opinion')
       expect(page).to have_content('This new opinion')
     end
 
-    scenario 'copy (retweet) user message' do
+    scenario 'Copy (retweet) user message' do
       link = page.find('a .timeline-photo', match: :first).find(:xpath, '..')
       link.click
       link = page.find('a .edit-opinion', match: :first).find(:xpath, '..')
@@ -69,7 +69,7 @@ RSpec.describe 'Opinions_features', type: :feature, feature: true do
       expect(page).to have_content("Opinion copied from @#{user5.username}")
     end
 
-    scenario 'copy and edit (retweet) showing a copy was edited from user' do
+    scenario 'Copy and edit (retweet) showing a copy was edited from user' do
       link = page.find('a .timeline-photo', match: :first).find(:xpath, '..')
       link.click
       link = page.find('a .edit-opinion', match: :first).find(:xpath, '..')
