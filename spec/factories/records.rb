@@ -7,12 +7,12 @@ FactoryBot.define do
   end
 
   factory :following do
-    follower_id { FFaker::Random.rand(1..6) } 
+    follower_id { FFaker::Random.rand(1..6) }
     followed_id { FFaker::Random.rand(1..6) }
   end
 
   factory :opinion do
-    text { FFaker::Lorem.sentence } 
+    text { FFaker::Lorem.sentence }
     user_id { FFaker::Random.rand(1..6) }
   end
 end

@@ -13,7 +13,7 @@ RSpec.describe User, type: :model do
   let(:op1) { build(:opinion, user_id: user.id) }
   let(:op2) { build(:opinion, user_id: user5.id) }
   let(:op3) { build(:opinion, user_id: user3.id) }
-  
+
   context 'Model methods verification' do
     before do
       user.save

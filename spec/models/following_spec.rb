@@ -15,9 +15,9 @@ RSpec.describe Following, type: :model do
     it 'Fails to create a follow missing one user' do
       @following = Following.new
       @following.build_saving(user2, nil)
-      expect(@following.errors.full_messages).to include("Follower can't be blank")   
+      expect(@following.errors.full_messages).to include("Follower can't be blank")
       @following.build_saving(nil, user)
-      expect(@following.errors.full_messages).to include("Followed can't be blank")   
+      expect(@following.errors.full_messages).to include("Followed can't be blank")
     end
   end
 end
