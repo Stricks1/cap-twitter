@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   def show
     @opinions = Opinion.ordered_opinion.include_user_copied.user_filter_Opinion(@user)
     @users = @user.followds
+    @users2 = @user.follows
   end
 
   # GET /users/new

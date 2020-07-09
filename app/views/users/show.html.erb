@@ -17,11 +17,14 @@
     <div class='d-flex justify-content-center'>
         <%= render 'profile_info', user: @user %>
     </div>
-    <div class='d-flex py-4 px-1 px-md-4 right-tab-prof right-bold-txt color-light-grey borderb-grey'>
-      FOLLOWED BY
+    <div class='d-flex py-4 px-1 px-md-4 right-tab-prof right-bold-txt color-light-grey borderb-grey flex-column flex-md-row' onClick='changeView(this);'>
+      <span class='user-selected b-followed'>FOLLOWED BY</span>
+      <span class='d-none d-md-inline'> &nbsp;/&nbsp; </span>
+      <span class='user-unselected b-following'>FOLLOWING</span> 
     </div>
     <div class='d-flex justify-content-center flex-nowrap'>
-      <%= render 'user_followeds', users: @users %>  
+      <%= render 'user_followeds', users: @users %>
+      <%= render 'user_following', users: @users2 %>
     </div>
   </div>
 </div>

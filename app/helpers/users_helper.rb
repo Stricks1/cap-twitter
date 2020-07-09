@@ -80,4 +80,8 @@ module UsersHelper
   def link_unfollow(usr)
     return link_to '-', following_path(usr), method: :delete, class: 'textdec-none circle-link' if current_user.follows.include?(usr)
   end
+
+  def class_follower_following(opt)
+    opt ? "<div class='d-flex flex-column following'>" : "<div class='d-flex flex-column followed'>"
+  end
 end
