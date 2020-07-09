@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { build( :user ) }
-  let(:user2) { build( :user ) }
+  let(:user) { build(:user) }
+  let(:user2) { build(:user) }
 
   context 'model methods verification' do
     it 'create a new follow between users' do
