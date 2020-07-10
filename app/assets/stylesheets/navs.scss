@@ -1,0 +1,67 @@
+// Styles related to navigations, header/left column
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.bg-left-tab {
+  background-color: #1b2a3e;
+}
+
+.bg-left-bt-tab {
+  background-color: #213346;
+}
+
+.bg-top-tab {
+  background-color: #51a2e4;
+}
+
+.bold-name {
+  font-size: 0.8em;
+  color: #526478;
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 1.1em;
+}
+
+.bold-name-right {
+  font-size: 0.8em;
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 1.1em;
+}
+
+.bold-flw {
+  font-size: 0.6em;
+  color: #526478;
+  font-weight: bold;
+  line-height: 1.1em;
+}
+
+.left-links,
+.central-links {
+  text-transform: uppercase;
+}
+
+.left-links:hover {
+  background-color: #4b9ad3;
+}
+
+.left-links:hover span,
+.left-links:hover i {
+  color: white;
+}
+
+.left-bold-txt {
+  font-weight: bold;
+  color: #526478;
+  font-size: 0.6em;
+}
+
+.left-links:hover,
+.central-links:hover {
+  text-decoration: none;
+}
+
+.logo-left {
+  color: #526478;
+  font-size: 0.8em;
+}

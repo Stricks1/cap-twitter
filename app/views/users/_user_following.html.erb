@@ -1,0 +1,16 @@
+<div class='flex-column c-following d-none c-unselected-flw'>
+  <% @users2.each do |u| %>
+   <div class='d-flex my-2 flex-column flex-md-row'>
+     <%= link_user_img(u) %>
+     <div class='d-flex flex-column w-100 justify-content-center'>
+         <span class='font-weight-bold text-dark text-center'>
+           <%= u.full_name %>
+         </span>
+       <span class='text-center'>@<%= u.username %></span>
+      </div>
+       <span class='mx-2 font-weight-bold align-self-center'>
+         <%= btn_follow(u) %>
+       </span>
+   </div>
+  <% end %> 
+</div>

@@ -1,0 +1,33 @@
+
+  <div class='opinions-page d-flex flex-column col-9 col-md-8 col-lg-9 h-100'>
+    <div class='borderb-grey d-flex flex-column'>
+      <%= cover_photo(@user) %>
+      <div class='d-flex justify-content-between'>
+        <a href=<%= user_path(@user) %> class='central-links d-flex p-4'>
+          <span class='center-bold-txt'>Opinions</span>
+        </a>
+        <%= follow_unfollow(@user) %>
+      </div>
+    </div>
+    <div class='d-flex justify-content-center'>
+      <%= render 'opi_user', opinions: @opinions, user: @user%>  
+    </div>
+  </div>
+  <div class='right-tab borderl-grey col-3 col-md-4 col-lg-3'>    
+    <div class='d-flex justify-content-center'>
+        <%= render 'profile_info', user: @user %>
+    </div>
+    <div class='d-flex py-4 px-1 px-md-4 right-tab-prof right-bold-txt color-light-grey borderb-grey flex-column flex-md-row' onClick='changeView(this);'>
+      <span class='user-selected b-followed'>FOLLOWED BY</span>
+      <span class='d-none d-md-inline'> &nbsp;/&nbsp; </span>
+      <span class='user-unselected b-following'>FOLLOWING</span> 
+    </div>
+    <div class='d-flex justify-content-center flex-nowrap'>
+      <%= render 'user_followeds', users: @users %>
+      <%= render 'user_following', users: @users2 %>
+    </div>
+  </div>
+</div>
+
+
+   

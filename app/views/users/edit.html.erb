@@ -1,0 +1,10 @@
+
+  <div class='py-4 w-50 justify-content-center'>
+    <h1 class='text-center'>Edit Profile </h1>
+    <fieldset disabled>
+      <label class='form-label'>Username</label>
+      <input class='form-text disabled' value='<%= current_user.username %>' >
+    </fieldset>
+    <%= render 'form_edit', user: @user %>
+  </div>
+</div>

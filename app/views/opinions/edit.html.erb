@@ -1,6 +1,8 @@
-<h1>Editing Opinion</h1>
-
-<%= render 'form', opinion: @opinion %>
-
-<%= link_to 'Show', @opinion %> |
-<%= link_to 'Back', opinions_path %>
+<div class='bg-main-grey d-flex row w-75'>
+  <div class='opinions-page d-flex flex-column col-12'>
+    <h1 class='text-center mt-4'>Edit Opinion</h1>
+    <div class='d-flex justify-content-center'>
+      <%= form_edit_info(@opinion) %>
+    </div>
+  </div>
+</div>

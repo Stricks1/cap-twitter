@@ -1,0 +1,52 @@
+// Styles related to profile information/who to follow information right/column
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.color-grey,
+.color-grey:hover {
+  color: #386e9a;
+}
+
+.right-bold-txt {
+  font-weight: bold;
+}
+
+.color-light-grey {
+  color: #bebfc1;
+}
+
+.right-tab {
+  padding-top: 3px;
+}
+
+.right-tab-prof {
+  margin-top: 2px;
+  font-size: 0.75em;
+  cursor: pointer;
+}
+
+.circle-link {
+  border: 1px solid #888;
+  font-size: 1.2em;
+  color: #888;
+  border-radius: 100%;
+  padding: 3px 7px;
+}
+
+.circle-link:hover {
+  color: #888;
+  background-color: white;
+}
+
+.unfollow-btn {
+  height: 40px;
+  margin-right: 1.5em;
+}
+
+.unfollow-btn:hover {
+  color: white;
+}
+
+.user-selected {
+  color: #51a2e4;
+}

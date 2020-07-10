@@ -1,14 +1,7 @@
-body {
-  background-color: #fff;
-  color: #333;
-  margin: 33px;
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
-}
-
-p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
+ol,
+ul,
+td {
+  font-family: 'Nunito', sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
@@ -19,41 +12,12 @@ pre {
   font-size: 11px;
 }
 
-a {
-  color: #000;
-
-  &:visited {
-    color: #666;
-  }
-
-  &:hover {
-    color: #fff;
-    background-color: #000;
-  }
-}
-
 th {
   padding-bottom: 5px;
 }
 
 td {
   padding: 0 5px 7px;
-}
-
-div {
-  &.field, &.actions {
-    margin-bottom: 10px;
-  }
-}
-
-#notice {
-  color: green;
-}
-
-.field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
 }
 
 #error_explanation {

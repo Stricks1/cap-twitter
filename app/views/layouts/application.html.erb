@@ -9,7 +9,20 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+
   <body>
-    <%= yield %>
+    <div class='container-fluid d-flex'>
+      <div class='row w-100'>
+        <%= user_info(current_user) %>
+          <header class='bg-top-tab d-flex justify-content-between'>
+            <%= header_bar %>
+          </header>
+          <div class='h-100'>
+            <%= flash_info %> 
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

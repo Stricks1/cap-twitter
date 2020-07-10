@@ -1,0 +1,31 @@
+<%= form_with(model: user, local: true) do |form| %>
+
+  <%= form.label :username, 'Username (case sensitive)*', :class => 'form-label'  %>
+  <%= form.text_field :username, :class => 'form-text', placeholder: 'Username here...', autofocus: true %>
+  <% user.errors.messages[:username].each do |message| %>
+    <div class='error-sm'><%= message %></div>
+  <% end %> 
+
+  <%= form.label :full_name, 'Full Name *', :class => 'form-label' %>
+  <%= form.text_field :full_name, :class => 'form-text', placeholder: 'Full name here...'  %>
+  <% user.errors.messages[:full_name].each do |message| %>
+    <div class='error-sm'><%= message %></div>
+  <% end %> 
+
+  <%= form.label :photo, 'Photo (URL)', :class => 'form-label' %>
+  <%= form.text_field :photo, :class => 'form-text', placeholder: 'URL here...'  %>
+  <% user.errors.messages[:photo].each do |message| %>
+    <div class='error-sm'><%= message %></div>
+  <% end %> 
+
+
+  <%= form.label :cover_image, 'Cover Image (URL)', :class => 'form-label' %>
+  <%= form.text_field :cover_image, :class => 'form-text', placeholder: 'URL here...'  %>
+  <% user.errors.messages[:cover_image].each do |message| %>
+    <div class='error-sm'><%= message %></div>
+  <% end %> 
+
+  <div class='actions mt-4'>
+    <%= form.submit 'Create Account', :class => 'form-btn' %>
+  </div>
+<% end %>

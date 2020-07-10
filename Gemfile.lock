@@ -33,6 +33,7 @@ GEM
       activemodel (= 5.2.4.3)
       activesupport (= 5.2.4.3)
       arel (>= 9.0)
+    activerecord-reset-pk-sequence (0.2.1)
     activestorage (5.2.4.3)
       actionpack (= 5.2.4.3)
       activerecord (= 5.2.4.3)
@@ -57,6 +58,9 @@ GEM
       popper_js (>= 1.14.3, < 2)
       sassc-rails (>= 2.0.0)
     builder (3.2.4)
+    bullet (6.1.0)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     byebug (11.1.3)
     capybara (3.33.0)
       addressable
@@ -82,7 +86,15 @@ GEM
     diff-lcs (1.4.3)
     erubi (1.9.0)
     execjs (2.7.0)
+    factory_bot (6.1.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.1.0)
+      factory_bot (~> 6.1.0)
+      railties (>= 5.0.0)
+    ffaker (2.15.0)
     ffi (1.13.1)
+    font-awesome-rails (4.7.0.5)
+      railties (>= 3.2, < 6.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.8.3)
@@ -107,6 +119,7 @@ GEM
     mini_portile2 (2.4.0)
     minitest (5.14.1)
     msgpack (1.3.3)
+    net-http-persistent (2.9.4)
     nio4r (2.5.2)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
@@ -209,6 +222,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
+    uniform_notifier (1.13.0)
     web-console (3.7.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -228,14 +242,20 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-reset-pk-sequence
   bootsnap (>= 1.1.0)
   bootstrap (~> 4.5)
+  bullet
   byebug
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)
+  factory_bot_rails (~> 6.1)
+  ffaker
+  font-awesome-rails
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
+  net-http-persistent (~> 2.9, >= 2.9.4)
   pg
   puma (~> 3.11)
   rails (~> 5.2.4, >= 5.2.4.3)
