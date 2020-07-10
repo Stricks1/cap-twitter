@@ -36,6 +36,10 @@ The functionality to follow/unfollow is very intuitive. '+' buttons to follow cl
 
 [Live Demo Link](https://bearded-toonie-16990.herokuapp.com/)
 
+## Video Presentation
+
+[Project Presentation](https://www.loom.com/share/3c752e01c5904c7785cb4167621e700e)
+
 ## Getting Started
 
 You can get a local copy of the repository please run the following commands on your terminal:
@@ -90,6 +94,8 @@ It will run the 3 test files:
 ## Authors
 
 👤 **Author**
+
+Gabriel Malheiros Silveira
 
 - Github: [@Stricks1](https://github.com/Stricks1)
 - E-mail: [Gabriel Silveira](mailto:gmalheiross@gmail.com)
